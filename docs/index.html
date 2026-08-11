@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaseya Integration &mdash; Enterprise PSA Integration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #374151;
+  background: #ffffff;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography ───────────────────────────────── */
+h1 { font-size: 56px; font-weight: 700; color: #111827; line-height: 1.1; letter-spacing: -1.5px; }
+h2 { font-size: 24px; font-weight: 600; color: #111827; letter-spacing: -0.3px; margin-bottom: 32px; }
+h3 { font-size: 18px; font-weight: 600; color: #111827; }
+p  { color: #6b7280; font-size: 17px; line-height: 1.8; }
+a  { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ───────────────────────────────────── */
+.page-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sticky Side Navigation ───────────────────── */
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  padding: 48px 24px 48px 32px;
+  border-right: 1px solid #e5e7eb;
+  background: #ffffff;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.side-nav .nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #9ca3af;
+  margin-bottom: 16px;
+}
+.side-nav a {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+.side-nav a:hover {
+  color: #111827;
+  background: #f3f4f6;
+  text-decoration: none;
+}
+.side-nav a.active {
+  color: #2563eb;
+  background: #eff6ff;
+  font-weight: 600;
+}
+
+/* ── Main Content ─────────────────────────────── */
+.main-content {
+  margin-left: 220px;
+  flex: 1;
+  max-width: 100%;
+}
+
+/* ── Sections ─────────────────────────────────── */
+section {
+  padding: 80px 80px;
+  max-width: 900px;
+}
+section + section {
+  border-top: 1px solid #e5e7eb;
+}
+.section-alt {
+  background: #f9fafb;
+  max-width: 100%;
+}
+.section-alt > .section-inner {
+  max-width: 900px;
+  padding: 80px 80px;
+}
+
+/* ── Hero ─────────────────────────────────────── */
+.hero {
+  padding: 120px 80px 100px;
+  max-width: 900px;
+}
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2563eb;
+  border: 1.5px solid #2563eb;
+  padding: 4px 14px;
+  border-radius: 4px;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  margin-bottom: 20px;
+}
+.hero .subtitle {
+  font-size: 22px;
+  color: #6b7280;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── Executive Summary ────────────────────────── */
+.exec-summary p {
+  margin-bottom: 20px;
+  max-width: 680px;
+}
+.exec-summary p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Key Metrics (Bar Charts) ─────────────────── */
+.metrics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.metric-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.metric-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.metric-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #059669;
+}
+.metric-bar-track {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.metric-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: #2563eb;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 0;
+}
+.metric-bar-fill.green { background: #059669; }
+.metric-bar-fill.blue  { background: #2563eb; }
+
+/* ── Integration Scope (Expandable) ───────────── */
+.scope-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.scope-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+.scope-item:first-child {
+  border-top: 1px solid #e5e7eb;
+}
+.scope-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  cursor: pointer;
+  user-select: none;
+}
+.scope-header:hover .scope-title { color: #2563eb; }
+.scope-number {
+  font-size: 13px;
+  font-weight: 700;
+  color: #9ca3af;
+  width: 24px;
+  flex-shrink: 0;
+}
+.scope-title {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  transition: color 0.15s ease;
+}
+.scope-chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  color: #9ca3af;
+}
+.scope-item.open .scope-chevron {
+  transform: rotate(90deg);
+}
+.scope-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.scope-item.open .scope-body {
+  max-height: 200px;
+}
+.scope-body-inner {
+  padding: 0 0 24px 40px;
+}
+.scope-body-inner p {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+/* ── Architecture Diagram ─────────────────────── */
+.arch-diagram {
+  padding: 48px 32px;
+  margin-top: 16px;
+}
+.arch-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.arch-box {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 16px 28px;
+  text-align: center;
+  background: #ffffff;
+}
+.arch-box.primary {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+.arch-box .arch-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+.arch-box .arch-sub {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+.arch-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+}
+.arch-connector .arrow {
+  font-size: 18px;
+  color: #9ca3af;
+  letter-spacing: 2px;
+}
+.arch-branches {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.arch-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.arch-branch .branch-line {
+  width: 1px;
+  height: 24px;
+  background: #d1d5db;
+}
+.arch-branch .arch-box {
+  font-size: 12px;
+  padding: 10px 20px;
+}
+
+/* ── Challenges & Decisions ───────────────────── */
+.cd-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.cd-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.cd-row:first-child {
+  border-top: 1px solid #e5e7eb;
+}
+.cd-row .cd-col {
+  padding: 20px 0;
+}
+.cd-row .cd-col:first-child {
+  padding-right: 32px;
+}
+.cd-row .cd-col:last-child {
+  padding-left: 32px;
+  border-left: 1px solid #e5e7eb;
+}
+.cd-col-header {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+.cd-col p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── PM Work ──────────────────────────────────── */
+.pm-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pm-list li {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.7;
+  padding-left: 20px;
+  position: relative;
+}
+.pm-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2563eb;
+}
+.pm-list li strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ── Footer ───────────────────────────────────── */
+.footer {
+  padding: 48px 80px;
+  border-top: 1px solid #e5e7eb;
+  max-width: 900px;
+}
+.footer-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+.footer-role {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 16px;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2563eb;
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 1024px) {
+  .side-nav { display: none; }
+  .main-content { margin-left: 0; }
+  section, .hero, .footer, .section-alt > .section-inner { padding-left: 40px; padding-right: 40px; }
+}
+@media (max-width: 640px) {
+  h1 { font-size: 36px; }
+  .hero .subtitle { font-size: 18px; }
+  section, .hero, .footer, .section-alt > .section-inner { padding-left: 24px; padding-right: 24px; }
+  .cd-row { grid-template-columns: 1fr; }
+  .cd-row .cd-col:last-child { border-left: none; padding-left: 0; padding-top: 0; }
+  .cd-row .cd-col:first-child { padding-right: 0; }
+  .arch-row { flex-direction: column; }
+  .arch-connector .arrow { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ── Side Navigation ─────────────────────── -->
+  <nav class="side-nav" id="sideNav">
+    <div class="nav-label">Kaseya Integration</div>
+    <a href="#hero" class="active" data-section="hero">Overview</a>
+    <a href="#summary" data-section="summary">Executive Summary</a>
+    <a href="#metrics" data-section="metrics">Key Metrics</a>
+    <a href="#scope" data-section="scope">Integration Scope</a>
+    <a href="#architecture" data-section="architecture">Architecture</a>
+    <a href="#challenges" data-section="challenges">Challenges & Decisions</a>
+    <a href="#pm-work" data-section="pm-work">PM Work</a>
+  </nav>
+
+  <!-- ── Main Content ────────────────────────── -->
+  <main class="main-content">
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="badge">Enterprise Partner</div>
+      <h1>Kaseya Integration</h1>
+      <p class="subtitle">$2.2M Contract &mdash; Enterprise PSA Integration</p>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="exec-summary" id="summary">
+      <h2>Executive Summary</h2>
+      <p>
+        Kaseya is a leading IT management platform serving thousands of Managed Service Providers worldwide. Their Autotask PSA product is the operational backbone for MSP ticket management, billing, and service delivery. This integration connects Vendasta's platform directly into that ecosystem.
+      </p>
+      <p>
+        The $2.2M enterprise engagement delivered a full-stack integration spanning bidirectional PSA synchronization, SSO/OIDC authentication for MSP technicians, billing reconciliation, and Powered Services Pro AMP product configuration. Every component was built to enterprise SLA requirements with dedicated escalation workflows.
+      </p>
+      <p>
+        This project required deep cross-functional coordination across engineering, enterprise sales, partner success, and Kaseya's own technical teams &mdash; with Statement of Work sign-off via DocuSign before development began on each phase.
+      </p>
+    </section>
+
+    <!-- Key Metrics -->
+    <div class="section-alt" id="metrics">
+      <div class="section-inner">
+        <h2>Key Metrics</h2>
+        <div class="metrics-grid">
+
+          <div class="metric-row">
+            <div class="metric-label">
+              <span>Contract Value</span>
+              <span class="metric-value">$2.2M</span>
+            </div>
+            <div class="metric-bar-track">
+              <div class="metric-bar-fill green" data-width="92"></div>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-label">
+              <span>Autotask PSA Connected</span>
+              <span class="metric-value">Live</span>
+            </div>
+            <div class="metric-bar-track">
+              <div class="metric-bar-fill blue" data-width="100"></div>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-label">
+              <span>SSO / OIDC Authentication</span>
+              <span class="metric-value">Live</span>
+            </div>
+            <div class="metric-bar-track">
+              <div class="metric-bar-fill blue" data-width="100"></div>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-label">
+              <span>MSP Ecosystem Integration</span>
+              <span class="metric-value">Active</span>
+            </div>
+            <div class="metric-bar-track">
+              <div class="metric-bar-fill green" data-width="85"></div>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-label">
+              <span>Billing Sync</span>
+              <span class="metric-value">Live</span>
+            </div>
+            <div class="metric-bar-track">
+              <div class="metric-bar-fill blue" data-width="100"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Integration Scope -->
+    <section id="scope">
+      <h2>Integration Scope</h2>
+      <div class="scope-list">
+
+        <div class="scope-item">
+          <div class="scope-header" onclick="toggleScope(this)">
+            <span class="scope-number">01</span>
+            <span class="scope-title">Autotask PSA Sync</span>
+            <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="scope-body">
+            <div class="scope-body-inner">
+              <p>Bidirectional ticket and service management synchronization between Vendasta and Autotask PSA. Includes real-time status updates, field mapping configuration, and conflict resolution for concurrent edits across platforms.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scope-item">
+          <div class="scope-header" onclick="toggleScope(this)">
+            <span class="scope-number">02</span>
+            <span class="scope-title">SSO / OIDC Authentication</span>
+            <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="scope-body">
+            <div class="scope-body-inner">
+              <p>Single sign-on using OpenID Connect for MSP technicians. Enables seamless authentication from Kaseya's environment into Vendasta without separate credentials, with role-based access control mapped from Autotask user roles.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scope-item">
+          <div class="scope-header" onclick="toggleScope(this)">
+            <span class="scope-number">03</span>
+            <span class="scope-title">Billing Integration</span>
+            <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="scope-body">
+            <div class="scope-body-inner">
+              <p>Contract and invoice synchronization between Vendasta billing and Autotask PSA contracts. Handles multi-currency scenarios, prorated adjustments, and automated reconciliation with exception reporting for discrepancies.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scope-item">
+          <div class="scope-header" onclick="toggleScope(this)">
+            <span class="scope-number">04</span>
+            <span class="scope-title">AMP Product Configuration</span>
+            <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="scope-body">
+            <div class="scope-body-inner">
+              <p>Powered Services Pro AMP setup and configuration for MSP partners. Includes per-partner product provisioning, feature flag management, and white-label configuration to match each MSP's branding requirements.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scope-item">
+          <div class="scope-header" onclick="toggleScope(this)">
+            <span class="scope-number">05</span>
+            <span class="scope-title">Escalation Workflow</span>
+            <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="scope-body">
+            <div class="scope-body-inner">
+              <p>Enterprise SLA monitoring with automated escalation tiers. Includes response-time tracking, severity-based routing, executive notification chains, and integration with Adam Stark's enterprise account management workflow.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <div class="section-alt" id="architecture">
+      <div class="section-inner">
+        <h2>Architecture</h2>
+        <div class="arch-diagram">
+          <!-- Main flow -->
+          <div class="arch-row">
+            <div class="arch-box primary">
+              <div class="arch-label">Vendasta Platform</div>
+              <div class="arch-sub">Core Services</div>
+            </div>
+            <div class="arch-connector">
+              <span class="arrow">&larr;&mdash;&rarr;</span>
+            </div>
+            <div class="arch-box primary">
+              <div class="arch-label">Autotask PSA</div>
+              <div class="arch-sub">Kaseya</div>
+            </div>
+          </div>
+          <!-- Branch connectors -->
+          <div class="arch-branches">
+            <div class="arch-branch">
+              <div class="branch-line"></div>
+              <div class="arch-box">
+                <div class="arch-label">SSO / OIDC</div>
+                <div class="arch-sub">Authentication</div>
+              </div>
+            </div>
+            <div class="arch-branch">
+              <div class="branch-line"></div>
+              <div class="arch-box">
+                <div class="arch-label">Billing Sync</div>
+                <div class="arch-sub">Contracts & Invoices</div>
+              </div>
+            </div>
+            <div class="arch-branch">
+              <div class="branch-line"></div>
+              <div class="arch-box">
+                <div class="arch-label">PSA Sync</div>
+                <div class="arch-sub">Tickets & Services</div>
+              </div>
+            </div>
+            <div class="arch-branch">
+              <div class="branch-line"></div>
+              <div class="arch-box">
+                <div class="arch-label">AMP Config</div>
+                <div class="arch-sub">Product Setup</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Challenges & Decisions -->
+    <section id="challenges">
+      <h2>Challenges & Decisions</h2>
+      <div class="cd-grid">
+
+        <div class="cd-row">
+          <div class="cd-col">
+            <div class="cd-col-header">Challenge</div>
+            <p><strong>Enterprise SLA requirements</strong> &mdash; Kaseya expected contractual uptime and response-time guarantees exceeding standard platform commitments.</p>
+          </div>
+          <div class="cd-col">
+            <div class="cd-col-header">Decision</div>
+            <p>Built a dedicated escalation workflow with severity-based routing and executive notification chains. Defined SLA tiers in the Statement of Work with explicit penalty clauses.</p>
+          </div>
+        </div>
+
+        <div class="cd-row">
+          <div class="cd-col">
+            <div class="cd-col-header">Challenge</div>
+            <p><strong>Multi-tenant MSP architecture</strong> &mdash; Each MSP operates as an independent business with its own clients, requiring strict data isolation.</p>
+          </div>
+          <div class="cd-col">
+            <div class="cd-col-header">Decision</div>
+            <p>Implemented per-MSP configuration isolation. Each Managed Service Provider gets an independent sync context with its own field mappings, billing rules, and access controls.</p>
+          </div>
+        </div>
+
+        <div class="cd-row">
+          <div class="cd-col">
+            <div class="cd-col-header">Challenge</div>
+            <p><strong>Bidirectional sync conflicts</strong> &mdash; Concurrent edits in both Vendasta and Autotask could create data integrity issues.</p>
+          </div>
+          <div class="cd-col">
+            <div class="cd-col-header">Decision</div>
+            <p>Adopted a last-write-wins strategy with conflict logging. Built an exception dashboard for operations teams to review and manually resolve flagged discrepancies.</p>
+          </div>
+        </div>
+
+        <div class="cd-row">
+          <div class="cd-col">
+            <div class="cd-col-header">Challenge</div>
+            <p><strong>SSO role mapping complexity</strong> &mdash; Autotask user roles did not map 1:1 to Vendasta permissions, risking over- or under-provisioning.</p>
+          </div>
+          <div class="cd-col">
+            <div class="cd-col-header">Decision</div>
+            <p>Created a configurable role-mapping layer allowing each MSP to define how Autotask roles translate to Vendasta access levels, with a secure default of minimal permissions.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PM Work -->
+    <div class="section-alt" id="pm-work">
+      <div class="section-inner">
+        <h2>Product Management Work</h2>
+        <ul class="pm-list">
+          <li><strong>Requirements gathering</strong> with enterprise stakeholders across Kaseya product, engineering, and partner success teams over a multi-month discovery phase.</li>
+          <li><strong>Statement of Work definition</strong> with DocuSign sign-off required before development started on each integration phase. Scope, timeline, and acceptance criteria documented per phase.</li>
+          <li><strong>Cross-team coordination</strong> across Vendasta engineering (Chennai async team), enterprise sales, partner success, and Kaseya's technical integration team.</li>
+          <li><strong>SLA definition and escalation design</strong> establishing response-time tiers, severity classifications, and executive escalation paths with Adam Stark as the enterprise account escalation point.</li>
+          <li><strong>Acceptance criteria authoring</strong> covering happy path, edge cases, multi-tenant isolation, concurrent sync scenarios, SSO failure modes, and billing reconciliation validation.</li>
+          <li><strong>Mission Brief and Product Factory artifacts</strong> following the full chain: Vision Document, Mission Brief, Prototype, Request for Comments, Epic, and Stories.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-name">Sangeetha K</div>
+      <div class="footer-role">Product Manager &mdash; Integrations & Professional Services</div>
+      <div class="footer-links">
+        <a href="https://github.com/Sangythek190" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/SangeethaK" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+/* ── Expand / Collapse Scope Items ─────────── */
+function toggleScope(header) {
+  const item = header.parentElement;
+  item.classList.toggle('open');
+}
+
+/* ── Animate Metric Bars on Scroll ─────────── */
+function animateBars() {
+  const bars = document.querySelectorAll('.metric-bar-fill');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const width = bar.getAttribute('data-width');
+        bar.style.width = width + '%';
+        observer.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(bar => observer.observe(bar));
+}
+animateBars();
+
+/* ── Active Nav on Scroll ──────────────────── */
+function setupScrollSpy() {
+  const sections = document.querySelectorAll('section, .section-alt');
+  const navLinks = document.querySelectorAll('.side-nav a[data-section]');
+  const sectionMap = {};
+
+  navLinks.forEach(link => {
+    const id = link.getAttribute('data-section');
+    const el = document.getElementById(id);
+    if (el) sectionMap[id] = { link, el };
+  });
+
+  function updateActive() {
+    let current = 'hero';
+    const scrollY = window.scrollY + 160;
+
+    Object.keys(sectionMap).forEach(id => {
+      const section = sectionMap[id].el;
+      if (section.offsetTop <= scrollY) {
+        current = id;
+      }
+    });
+
+    navLinks.forEach(link => link.classList.remove('active'));
+    if (sectionMap[current]) {
+      sectionMap[current].link.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+}
+setupScrollSpy();
+</script>
+
+</body>
+</html>
