@@ -24,7 +24,7 @@ h1 { font-size: 48px; font-weight: 800; color: #111827; line-height: 1.1; letter
 h2 { font-size: 28px; font-weight: 700; color: #111827; letter-spacing: -0.5px; margin-bottom: 12px; }
 h3 { font-size: 18px; font-weight: 600; color: #111827; }
 p  { color: #6b7280; font-size: 16px; line-height: 1.75; }
-a  { color: #2563eb; text-decoration: none; }
+a  { color: #0891b2; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* ── Layout ───────────────────────────────────── */
@@ -51,7 +51,7 @@ a:hover { text-decoration: underline; }
   transition: all 0.15s ease; text-decoration: none;
 }
 .side-nav a:hover { color: #111827; background: #f3f4f6; text-decoration: none; }
-.side-nav a.active { color: #2563eb; background: #eff6ff; font-weight: 600; }
+.side-nav a.active { color: #0891b2; background: #ecfeff; font-weight: 600; }
 .nav-divider { height: 1px; background: #e5e7eb; margin: 10px 0; }
 
 /* ── Main Content ─────────────────────────────── */
@@ -97,7 +97,7 @@ section + section { border-top: 1px solid #f3f4f6; }
 }
 .card-label {
   font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
-  text-transform: uppercase; color: #2563eb; margin-bottom: 14px;
+  text-transform: uppercase; color: #0891b2; margin-bottom: 14px;
 }
 .card p { font-size: 14px; }
 .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -112,7 +112,7 @@ section + section { border-top: 1px solid #f3f4f6; }
 .journey-track::before {
   content: ''; position: absolute; left: 11px; top: 8px;
   width: 2px; bottom: 8px;
-  background: linear-gradient(180deg, #2563eb 0%, #059669 50%, #f59e0b 100%);
+  background: linear-gradient(180deg, #0891b2 0%, #059669 50%, #f59e0b 100%);
   border-radius: 1px;
 }
 .journey-step {
@@ -121,17 +121,17 @@ section + section { border-top: 1px solid #f3f4f6; }
 .journey-dot {
   position: absolute; left: -26px; top: 24px;
   width: 14px; height: 14px; border-radius: 50%;
-  border: 3px solid #2563eb; background: #ffffff;
+  border: 3px solid #0891b2; background: #ffffff;
   z-index: 2;
 }
-.journey-step.vendasta .journey-dot { border-color: #2563eb; }
+.journey-step.broadly .journey-dot { border-color: #0891b2; }
 .journey-step.integration .journey-dot { border-color: #059669; background: #059669; }
 .journey-step.autotask .journey-dot { border-color: #f59e0b; }
 .journey-platform {
   font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
   text-transform: uppercase; margin-bottom: 4px;
 }
-.journey-step.vendasta .journey-platform { color: #2563eb; }
+.journey-step.broadly .journey-platform { color: #0891b2; }
 .journey-step.integration .journey-platform { color: #059669; }
 .journey-step.autotask .journey-platform { color: #f59e0b; }
 .journey-title {
@@ -176,11 +176,11 @@ section + section { border-top: 1px solid #f3f4f6; }
 .metric-value { font-size: 14px; font-weight: 700; color: #059669; }
 .metric-bar-track { width: 100%; height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden; }
 .metric-bar-fill {
-  height: 100%; border-radius: 3px; background: #2563eb;
+  height: 100%; border-radius: 3px; background: #0891b2; /* teal primary */
   transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); width: 0;
 }
 .metric-bar-fill.green { background: #059669; }
-.metric-bar-fill.blue  { background: #2563eb; }
+.metric-bar-fill.blue  { background: #0891b2; }
 
 /* ── PM Impact ────────────────────────────────── */
 .impact-grid { display: flex; flex-direction: column; gap: 0; }
@@ -190,7 +190,7 @@ section + section { border-top: 1px solid #f3f4f6; }
 }
 .impact-row:first-child { border-top: 1px solid #e5e7eb; }
 .impact-label {
-  font-size: 13px; font-weight: 700; color: #2563eb;
+  font-size: 13px; font-weight: 700; color: #0891b2;
   text-transform: uppercase; letter-spacing: 0.5px; padding-top: 2px;
 }
 .impact-content p { font-size: 15px; line-height: 1.7; }
@@ -220,7 +220,7 @@ section + section { border-top: 1px solid #f3f4f6; }
   font-size: 11px; font-weight: 700; color: #6b7280;
   transition: all 0.3s ease; background: transparent;
 }
-.demo-flow-step.active .demo-flow-dot { border-color: #2563eb; background: #2563eb; color: #fff; }
+.demo-flow-step.active .demo-flow-dot { border-color: #0891b2; background: #0891b2; color: #fff; }
 .demo-flow-step.completed .demo-flow-dot { background: #059669; border-color: #059669; color: #fff; }
 .demo-flow-line {
   width: 36px; height: 2px; background: #374151; flex-shrink: 0;
@@ -235,10 +235,10 @@ section + section { border-top: 1px solid #f3f4f6; }
   text-transform: uppercase; padding: 5px 14px;
   border-radius: 100px; margin-bottom: 12px;
 }
-.platform-badge.vendasta { background: rgba(37,99,235,0.15); color: #60a5fa; }
+.platform-badge.broadly { background: rgba(8,145,178,0.15); color: #22d3ee; }
 .platform-badge.autotask { background: rgba(251,191,36,0.15); color: #fbbf24; }
 .platform-dot { width: 6px; height: 6px; border-radius: 50%; }
-.platform-badge.vendasta .platform-dot { background: #60a5fa; }
+.platform-badge.broadly .platform-dot { background: #22d3ee; }
 .platform-badge.autotask .platform-dot { background: #fbbf24; }
 
 .demo-viewer { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
@@ -265,12 +265,12 @@ section + section { border-top: 1px solid #f3f4f6; }
 .demo-step-title { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px; line-height: 1.3; }
 .demo-step-desc { font-size: 15px; color: #9ca3af; line-height: 1.7; margin-bottom: 24px; }
 .demo-highlight {
-  background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.2);
+  background: rgba(8,145,178,0.1); border: 1px solid rgba(8,145,178,0.2);
   border-radius: 8px; padding: 16px; margin-bottom: 24px;
 }
-.demo-highlight p { font-size: 13px; color: #93c5fd; line-height: 1.6; }
+.demo-highlight p { font-size: 13px; color: #67e8f9; line-height: 1.6; }
 .demo-highlight .highlight-label {
-  font-size: 11px; font-weight: 700; color: #60a5fa;
+  font-size: 11px; font-weight: 700; color: #22d3ee;
   text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
 }
 .demo-nav { display: flex; gap: 8px; }
@@ -281,8 +281,8 @@ section + section { border-top: 1px solid #f3f4f6; }
 }
 .demo-btn-prev { background: #1f2937; color: #9ca3af; border: 1px solid #374151; }
 .demo-btn-prev:hover { background: #374151; color: #fff; }
-.demo-btn-next { background: #2563eb; color: #fff; }
-.demo-btn-next:hover { background: #1d4ed8; }
+.demo-btn-next { background: #0891b2; color: #fff; }
+.demo-btn-next:hover { background: #0e7490; }
 .demo-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 .demo-btn svg { width: 14px; height: 14px; }
 .sync-badge {
@@ -304,14 +304,14 @@ section + section { border-top: 1px solid #f3f4f6; }
   border: 1.5px solid #e5e7eb; border-radius: 8px;
   padding: 16px 28px; text-align: center; background: #fff;
 }
-.arch-box.primary { border-color: #2563eb; background: #eff6ff; }
+.arch-box.primary { border-color: #0891b2; background: #ecfeff; }
 .arch-box .arch-label { font-size: 13px; font-weight: 600; color: #111827; }
 .arch-box .arch-sub { font-size: 11px; color: #9ca3af; margin-top: 2px; }
 .arch-connector { display: flex; align-items: center; justify-content: center; padding: 0 16px; }
 .arch-arrow-animated { display: flex; align-items: center; gap: 4px; }
 .arch-arrow-animated .arrow-line {
   width: 48px; height: 2px; border-radius: 1px;
-  background: linear-gradient(90deg, #2563eb, #059669, #2563eb);
+  background: linear-gradient(90deg, #0891b2, #059669, #0891b2);
   background-size: 200% 100%; animation: flow 2s linear infinite;
 }
 @keyframes flow { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
@@ -332,7 +332,7 @@ section + section { border-top: 1px solid #f3f4f6; }
   display: flex; align-items: center; gap: 16px;
   padding: 20px 0; cursor: pointer; user-select: none;
 }
-.scope-header:hover .scope-title { color: #2563eb; }
+.scope-header:hover .scope-title { color: #0891b2; }
 .scope-number { font-size: 13px; font-weight: 700; color: #9ca3af; width: 24px; flex-shrink: 0; }
 .scope-title { flex: 1; font-size: 16px; font-weight: 600; color: #111827; transition: color 0.15s ease; }
 .scope-tag {
@@ -357,7 +357,7 @@ section + section { border-top: 1px solid #f3f4f6; }
 .footer-name { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 4px; }
 .footer-role { font-size: 14px; color: #9ca3af; margin-bottom: 16px; }
 .footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 14px; font-weight: 500; color: #2563eb; }
+.footer-links a { font-size: 14px; font-weight: 500; color: #0891b2; }
 
 /* ── Responsive ───────────────────────────────── */
 @media (max-width: 1024px) {
@@ -415,7 +415,7 @@ section + section { border-top: 1px solid #f3f4f6; }
       </div>
       <h1>How I Turned a $2.2M Enterprise Deal Into a Live Platform Integration</h1>
       <p class="subtitle">
-        Kaseya's 1,000+ MSPs needed to sell digital marketing without leaving their IT management tool. I designed and shipped the bidirectional integration between Autotask PSA and Vendasta that made it possible &mdash; and proved it works.
+        Kaseya's 1,000+ MSPs needed to sell digital marketing without leaving their IT management tool. I designed and shipped the bidirectional integration between Autotask PSA and Broadly that made it possible &mdash; and proved it works.
       </p>
       <div class="hero-stats">
         <div class="hero-stat">
@@ -444,9 +444,9 @@ section + section { border-top: 1px solid #f3f4f6; }
 
       <div class="card-grid">
         <div class="card">
-          <div class="card-label">Vendasta's Business App</div>
+          <div class="card-label">Broadly's Business App</div>
           <h3>The White-Label Marketing Platform</h3>
-          <p>Vendasta provides a white-label platform where channel partners (like MSPs, agencies, and media companies) resell digital marketing products &mdash; websites, SEO, reputation management, social media, advertising &mdash; to their small business clients. The Business App is the storefront where SMBs access these services.</p>
+          <p>Broadly provides a white-label platform where channel partners (like MSPs, agencies, and media companies) resell digital marketing products &mdash; websites, SEO, reputation management, social media, advertising &mdash; to their small business clients. The Business App is the storefront where SMBs access these services.</p>
         </div>
         <div class="card">
           <div class="card-label">Kaseya's Autotask PSA</div>
@@ -458,7 +458,7 @@ section + section { border-top: 1px solid #f3f4f6; }
       <div class="card" style="margin-bottom: 24px;">
         <div class="card-label">The Business Opportunity</div>
         <h3>Kaseya's "AMP" &mdash; Powered Services Pro</h3>
-        <p>Kaseya launched AMP (Powered Services Pro) to help MSPs diversify beyond IT support by reselling digital marketing services powered by Vendasta. The $2.2M contract covered the full platform integration: authentication, CRM sync, billing reconciliation, and product configuration. Kaseya would white-label Vendasta's marketing products and sell them through their MSP channel to thousands of SMBs.</p>
+        <p>Kaseya launched AMP (Powered Services Pro) to help MSPs diversify beyond IT support by reselling digital marketing services powered by Broadly. The $2.2M contract covered the full platform integration: authentication, CRM sync, billing reconciliation, and product configuration. Kaseya would white-label Broadly's marketing products and sell them through their MSP channel to thousands of SMBs.</p>
       </div>
 
       <div class="card">
@@ -494,8 +494,8 @@ section + section { border-top: 1px solid #f3f4f6; }
           <div class="ba-card before">
             <h3>Before the Integration</h3>
             <ul class="ba-list">
-              <li>MSP techs had to log into Vendasta separately &mdash; different credentials, different UI, different workflow</li>
-              <li>Client data entered in Autotask had to be manually re-entered in Vendasta (company name, address, contacts, phone)</li>
+              <li>MSP techs had to log into Broadly separately &mdash; different credentials, different UI, different workflow</li>
+              <li>Client data entered in Autotask had to be manually re-entered in Broadly (company name, address, contacts, phone)</li>
               <li>No unified billing &mdash; MSPs reconciled two invoicing systems every month</li>
               <li>Contact updates made in one system never reached the other</li>
               <li>Activation stalled: MSPs signed up for AMP but never adopted because the friction was too high</li>
@@ -504,7 +504,7 @@ section + section { border-top: 1px solid #f3f4f6; }
           <div class="ba-card after">
             <h3>After the Integration</h3>
             <ul class="ba-list">
-              <li>One-click SSO from Autotask into Vendasta &mdash; no separate credentials needed</li>
+              <li>One-click SSO from Autotask into Broadly &mdash; no separate credentials needed</li>
               <li>Companies and contacts sync automatically in both directions &mdash; create in one, appears in the other</li>
               <li>Billing reconciles automatically across both platforms</li>
               <li>Every sync event is tracked in the activity feed with full audit trail</li>
@@ -533,37 +533,37 @@ section + section { border-top: 1px solid #f3f4f6; }
           <div class="journey-dot"></div>
           <div class="journey-platform">Autotask PSA &mdash; AMP</div>
           <div class="journey-title">MSP decides to sell marketing to a client</div>
-          <div class="journey-desc">The MSP wants to offer website, SEO, or reputation management to a client. They click into Kaseya's AMP (Powered Services Pro) section, which connects them to Vendasta's product catalog.</div>
+          <div class="journey-desc">The MSP wants to offer website, SEO, or reputation management to a client. They click into Kaseya's AMP (Powered Services Pro) section, which connects them to Broadly's product catalog.</div>
         </div>
 
         <div class="journey-step integration">
           <div class="journey-dot"></div>
           <div class="journey-platform">Integration Layer &mdash; SSO</div>
           <div class="journey-title">Single sign-on authenticates the technician</div>
-          <div class="journey-desc">OIDC authentication happens invisibly. The technician's Autotask role maps to the correct Vendasta permissions. No separate login. No password to remember. They land in Vendasta's Business App already authenticated.</div>
+          <div class="journey-desc">OIDC authentication happens invisibly. The technician's Autotask role maps to the correct Broadly permissions. No separate login. No password to remember. They land in Broadly's Business App already authenticated.</div>
           <span class="journey-tag after">I designed this</span>
         </div>
 
-        <div class="journey-step vendasta">
+        <div class="journey-step broadly">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Vendasta Business App</div>
+          <div class="journey-platform">Broadly Business App</div>
           <div class="journey-title">Client data is already there &mdash; no re-entry</div>
           <div class="journey-desc">The SMB client's company name, address, contacts, and phone numbers were automatically synced from Autotask the moment the integration was activated. The technician sees familiar data. No duplicate entry.</div>
           <span class="journey-tag after">I designed this</span>
         </div>
 
-        <div class="journey-step vendasta">
+        <div class="journey-step broadly">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Vendasta Business App</div>
+          <div class="journey-platform">Broadly Business App</div>
           <div class="journey-title">Technician activates marketing products</div>
-          <div class="journey-desc">The technician provisions website, SEO, or reputation management for their SMB client. Product setup, ordering, and management all happen within the Vendasta Business App &mdash; white-labeled under the MSP's own brand.</div>
+          <div class="journey-desc">The technician provisions website, SEO, or reputation management for their SMB client. Product setup, ordering, and management all happen within the Broadly Business App &mdash; white-labeled under the MSP's own brand.</div>
         </div>
 
         <div class="journey-step integration">
           <div class="journey-dot"></div>
           <div class="journey-platform">Integration Layer &mdash; Bidirectional Sync</div>
           <div class="journey-title">Updates flow back to Autotask automatically</div>
-          <div class="journey-desc">Any contact or company updates made in Vendasta sync back to Autotask PSA. New contacts added in Vendasta appear in the Autotask account. The activity feed logs every sync event with timestamps and IDs.</div>
+          <div class="journey-desc">Any contact or company updates made in Broadly sync back to Autotask PSA. New contacts added in Broadly appear in the Autotask account. The activity feed logs every sync event with timestamps and IDs.</div>
           <span class="journey-tag after">I designed this</span>
         </div>
 
@@ -571,7 +571,7 @@ section + section { border-top: 1px solid #f3f4f6; }
           <div class="journey-dot"></div>
           <div class="journey-platform">Integration Layer &mdash; Billing</div>
           <div class="journey-title">Billing reconciles across both platforms</div>
-          <div class="journey-desc">Contracts, invoices, and prorated adjustments synchronize between Vendasta billing and Autotask PSA contracts. No manual reconciliation. Exception reporting flags any discrepancies for review.</div>
+          <div class="journey-desc">Contracts, invoices, and prorated adjustments synchronize between Broadly billing and Autotask PSA contracts. No manual reconciliation. Exception reporting flags any discrepancies for review.</div>
           <span class="journey-tag after">I designed this</span>
         </div>
 
@@ -590,7 +590,7 @@ section + section { border-top: 1px solid #f3f4f6; }
       <div class="section-inner">
         <h2>Proof of Execution: Live Integration Demo</h2>
         <p class="section-subtitle" style="color:#9ca3af;">
-          I did not just spec this &mdash; I tested it hands-on. Step through the actual production test where data flows from Vendasta to Autotask and back.
+          I did not just spec this &mdash; I tested it hands-on. Step through the actual production test where data flows from Broadly to Autotask and back.
         </p>
 
         <div class="demo-flow" id="demoFlow"></div>
@@ -601,7 +601,7 @@ section + section { border-top: 1px solid #f3f4f6; }
               <span class="browser-dot red"></span>
               <span class="browser-dot yellow"></span>
               <span class="browser-dot green"></span>
-              <span class="browser-url" id="demoUrl">vendasta-training.smblogin.com</span>
+              <span class="browser-url" id="demoUrl">app.platform.io</span>
             </div>
             <img id="demoImage" src="img/step-01-connect.jpg" alt="Demo screenshot">
           </div>
@@ -657,7 +657,7 @@ section + section { border-top: 1px solid #f3f4f6; }
         <div class="impact-row">
           <div class="impact-label">Resolved sync conflicts</div>
           <div class="impact-content">
-            <p><strong>Defined the last-write-wins conflict resolution strategy</strong> with exception logging. When the same contact is edited in both Autotask and Vendasta within the same sync window, the most recent edit wins &mdash; but every conflict is logged in an exception dashboard for operations to audit.</p>
+            <p><strong>Defined the last-write-wins conflict resolution strategy</strong> with exception logging. When the same contact is edited in both Autotask and Broadly within the same sync window, the most recent edit wins &mdash; but every conflict is logged in an exception dashboard for operations to audit.</p>
             <span class="impact-outcome">Data integrity without blocking the user</span>
           </div>
         </div>
@@ -665,7 +665,7 @@ section + section { border-top: 1px solid #f3f4f6; }
         <div class="impact-row">
           <div class="impact-label">Designed role mapping</div>
           <div class="impact-content">
-            <p><strong>Autotask has 12 user role types that did not map 1:1 to Vendasta permissions.</strong> I designed a configurable role-mapping layer so each MSP can customize which Autotask roles get which Vendasta access levels. Default: minimal permissions (secure). Each MSP can promote roles without engineering involvement.</p>
+            <p><strong>Autotask has 12 user role types that did not map 1:1 to Broadly permissions.</strong> I designed a configurable role-mapping layer so each MSP can customize which Autotask roles get which Broadly access levels. Default: minimal permissions (secure). Each MSP can promote roles without engineering involvement.</p>
             <span class="impact-outcome">Self-service configuration &mdash; no tickets to engineering</span>
           </div>
         </div>
@@ -689,7 +689,7 @@ section + section { border-top: 1px solid #f3f4f6; }
         <div class="impact-row">
           <div class="impact-label">Hands-on testing</div>
           <div class="impact-content">
-            <p><strong>I personally tested the bidirectional sync in production.</strong> Created companies and contacts in Vendasta, verified they appeared in Autotask PSA, then created records in Autotask and verified they synced back. The demo on this page is from my actual testing session. I did not delegate verification to QA alone.</p>
+            <p><strong>I personally tested the bidirectional sync in production.</strong> Created companies and contacts in Broadly, verified they appeared in Autotask PSA, then created records in Autotask and verified they synced back. The demo on this page is from my actual testing session. I did not delegate verification to QA alone.</p>
             <span class="impact-outcome">PM-verified production quality</span>
           </div>
         </div>
@@ -785,7 +785,7 @@ section + section { border-top: 1px solid #f3f4f6; }
       <div class="arch-diagram">
         <div class="arch-row">
           <div class="arch-box primary">
-            <div class="arch-label">Vendasta Platform</div>
+            <div class="arch-label">Broadly Platform</div>
             <div class="arch-sub">Business App &middot; CRM &middot; Billing</div>
           </div>
           <div class="arch-connector">
@@ -848,7 +848,7 @@ section + section { border-top: 1px solid #f3f4f6; }
             </div>
             <div class="scope-body">
               <div class="scope-body-inner">
-                <p>Companies and contacts created in Vendasta automatically sync to Autotask PSA, and vice versa. Includes address, phone, email, and website field mapping with activity feed tracking and record source labels for every sync event.</p>
+                <p>Companies and contacts created in Broadly automatically sync to Autotask PSA, and vice versa. Includes address, phone, email, and website field mapping with activity feed tracking and record source labels for every sync event.</p>
               </div>
             </div>
           </div>
@@ -861,7 +861,7 @@ section + section { border-top: 1px solid #f3f4f6; }
             </div>
             <div class="scope-body">
               <div class="scope-body-inner">
-                <p>One-click sign-on from Autotask into Vendasta. Configurable role-mapping layer lets each MSP define how their Autotask roles translate to Vendasta permissions. Default: minimal access (secure).</p>
+                <p>One-click sign-on from Autotask into Broadly. Configurable role-mapping layer lets each MSP define how their Autotask roles translate to Broadly permissions. Default: minimal access (secure).</p>
               </div>
             </div>
           </div>
@@ -874,7 +874,7 @@ section + section { border-top: 1px solid #f3f4f6; }
             </div>
             <div class="scope-body">
               <div class="scope-body-inner">
-                <p>Automated contract and invoice sync between Vendasta billing and Autotask PSA contracts. Multi-currency support, prorated adjustments, and exception reporting for discrepancies.</p>
+                <p>Automated contract and invoice sync between Broadly billing and Autotask PSA contracts. Multi-currency support, prorated adjustments, and exception reporting for discrepancies.</p>
               </div>
             </div>
           </div>
@@ -911,7 +911,7 @@ section + section { border-top: 1px solid #f3f4f6; }
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-name">Sangeetha K</div>
-      <div class="footer-role">Product Manager &mdash; Integrations &amp; Professional Services, Vendasta</div>
+      <div class="footer-role">Product Manager &mdash; Integrations &amp; Professional Services, Broadly</div>
       <div class="footer-links">
         <a href="https://github.com/Sangythek190" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com/in/SangeethaK" target="_blank" rel="noopener">LinkedIn</a>
@@ -928,74 +928,74 @@ section + section { border-top: 1px solid #f3f4f6; }
 const demoSteps = [
   {
     img: 'img/step-01-connect.jpg',
-    platform: 'vendasta',
+    platform: 'broadly',
     title: 'Autotask Integration Activated',
-    desc: 'Inside Vendasta Administration, the Autotask integration shows "Connected." This OAuth handshake is the starting point \u2014 it links the MSP\'s Autotask PSA account to their Vendasta tenant.',
+    desc: 'Inside Broadly Administration, the Autotask integration shows "Connected." This OAuth handshake is the starting point \u2014 it links the MSP\'s Autotask PSA account to their Broadly tenant.',
     notice: 'The green "Connected" badge confirms the integration is live. From this moment, any company or contact created in either platform will sync to the other automatically.',
-    url: 'vendasta-training.smblogin.com/administration/integrations',
+    url: 'app.platform.io/admin/integrations',
     sync: null
   },
   {
     img: 'img/step-02-create-company.jpg',
-    platform: 'vendasta',
-    title: 'MSP Creates a Client Company in Vendasta',
-    desc: 'A new company "Test Company McDonalds" is created in Vendasta CRM with full details: address, website, city, state. This simulates an MSP adding a new SMB client.',
+    platform: 'broadly',
+    title: 'MSP Creates a Client Company in Broadly',
+    desc: 'A new company "Test Company McDonalds" is created in Broadly Platform with full details: address, website, city, state. This simulates an MSP adding a new SMB client.',
     notice: 'Every field entered here \u2014 company name, address, website \u2014 maps to a corresponding Autotask PSA field. The integration handles the field mapping automatically.',
-    url: 'vendasta-training.smblogin.com/crm/company/create',
+    url: 'app.platform.io/crm/company/create',
     sync: null
   },
   {
     img: 'img/step-03-company-created.jpg',
-    platform: 'vendasta',
+    platform: 'broadly',
     title: 'Company Created \u2014 Sync Triggered',
     desc: 'The green success toast confirms creation. Behind the scenes, the integration has already fired a sync event to create this as an Account in Autotask PSA.',
-    notice: 'The company profile is live in Vendasta with activity feed, contacts panel, and all business details. The sync to Autotask is happening in the background right now.',
-    url: 'vendasta-training.smblogin.com/crm/company/profile/...',
-    sync: 'vendasta-to-autotask'
+    notice: 'The company profile is live in Broadly with activity feed, contacts panel, and all business details. The sync to Autotask is happening in the background right now.',
+    url: 'app.platform.io/crm/company/profile/...',
+    sync: 'broadly-to-autotask'
   },
   {
     img: 'img/step-04-add-contact.jpg',
-    platform: 'vendasta',
+    platform: 'broadly',
     title: 'Add a Contact to the Company',
     desc: 'A new contact "Alice Wonders" is added to the company with first name, last name, phone, and email. This contact will sync to the matching Autotask account automatically.',
-    notice: 'The contact is being created directly in Vendasta CRM. Once saved, the integration syncs this contact to Autotask Account ID 29683779.',
-    url: 'vendasta-training.smblogin.com/crm/company/profile/...',
+    notice: 'The contact is being created directly in Broadly Platform. Once saved, the integration syncs this contact to the matching Autotask account.',
+    url: 'app.platform.io/crm/company/profile/...',
     sync: null
   },
   {
     img: 'img/step-05-autotask-verify.jpg',
     platform: 'autotask',
     title: 'Switch to Autotask \u2014 Company and Contact Are There',
-    desc: 'Opening Autotask PSA (ww2.autotask.net) \u2014 Account ID 29683779 "Test Company McDonalds" exists with all address fields matching and contact "Alice wonders" with the correct phone number.',
-    notice: 'This is the proof: Address 1 = "123 main street", City = "manhattan", State = "New York", Zip = "10001". Contact phone +12293839212. Created by "Testing Prod" on 04/09/2026. Every field matches.',
-    url: 'ww2.autotask.net/CRM/AccountDetail?accountId=29683779',
+    desc: 'Switching to Autotask PSA \u2014 "Test Company McDonalds" exists with all address fields matching and contact "Alice wonders" with the correct phone number.',
+    notice: 'This is the proof: Address 1 = "123 main street", City = "manhattan", State = "New York", Zip = "10001". The contact with the correct phone number is present. Every field entered in Broadly matches exactly in Autotask.',
+    url: 'psa.autotask.net/crm/account/detail?id=*****',
     sync: 'synced'
   },
   {
     img: 'img/step-06-bidi-sync.jpg',
-    platform: 'vendasta',
-    title: 'Bidirectional: Autotask Contact Syncs Back to Vendasta',
-    desc: 'A contact "Alice Newsey" was created in Autotask and automatically appeared in Vendasta. The activity feed shows "Autotask Contact Updated \u2014 Contact with ID 30684128 was updated in Autotask."',
-    notice: 'This is the bidirectional proof. The activity feed entries at 4:07 PM show real-time sync from Autotask back to Vendasta. Not a one-way import \u2014 continuous, live, two-way sync.',
-    url: 'vendasta-training.smblogin.com/crm/contact/profile/...',
-    sync: 'autotask-to-vendasta'
+    platform: 'broadly',
+    title: 'Bidirectional: Autotask Contact Syncs Back to Broadly',
+    desc: 'A contact "Alice Newsey" was created in Autotask and automatically appeared in Broadly. The activity feed shows "Autotask Contact Updated \u2014 Contact was updated in Autotask."',
+    notice: 'This is the bidirectional proof. The activity feed shows real-time sync events from Autotask flowing back into Broadly. Not a one-way import \u2014 continuous, live, two-way sync.',
+    url: 'app.platform.io/crm/contact/profile/...',
+    sync: 'autotask-to-broadly'
   },
   {
     img: 'img/step-07-autotask-contacts.jpg',
     platform: 'autotask',
     title: 'Both Contacts Visible in Autotask',
     desc: 'Back in Autotask PSA, the account now shows Contacts (2): "Ms. Alice Newsey" and "Alice wonders" \u2014 both with phone numbers and last activity dates matching across platforms.',
-    notice: 'One contact was created in Vendasta (Alice wonders) and one in Autotask (Alice Newsey). Both appear in both systems. The integration works in both directions without manual intervention.',
-    url: 'ww2.autotask.net/CRM/AccountDetail?accountId=29683779',
+    notice: 'One contact was created in Broadly (Alice wonders) and one in Autotask (Alice Newsey). Both appear in both systems. The integration works in both directions without manual intervention.',
+    url: 'psa.autotask.net/crm/account/detail?id=*****',
     sync: 'synced'
   },
   {
     img: 'img/step-08-final-contacts.jpg',
-    platform: 'vendasta',
+    platform: 'broadly',
     title: 'Final State: Record Source Tracking',
-    desc: 'The Vendasta Contacts list shows all records with "Record source" labels: "CRM UI" for contacts created in Vendasta, "autotask" for contacts synced from Autotask PSA. Full audit trail.',
-    notice: '"Alice Newsey" shows record source = "autotask" \u2014 she was created in Autotask and synced to Vendasta. "Alice wonders" and "Test Contact" show "CRM UI" \u2014 created in Vendasta. Complete data lineage.',
-    url: 'vendasta-training.smblogin.com/crm/contact/list',
+    desc: 'The Broadly Contacts list shows all records with "Record source" labels: "CRM UI" for contacts created in Broadly, "autotask" for contacts synced from Autotask PSA. Full audit trail.',
+    notice: '"Alice Newsey" shows record source = "autotask" \u2014 she was created in Autotask and synced to Broadly. "Alice wonders" and "Test Contact" show "CRM UI" \u2014 created in Broadly. Complete data lineage.',
+    url: 'app.platform.io/crm/contact/list',
     sync: 'synced'
   }
 ];
@@ -1020,12 +1020,12 @@ function renderDemoStep() {
   document.getElementById('demoTitle').textContent = s.title;
   document.getElementById('demoDesc').textContent = s.desc;
   document.getElementById('demoNotice').textContent = s.notice;
-  document.getElementById('demoPlatform').innerHTML = s.platform === 'vendasta'
-    ? '<span class="platform-badge vendasta"><span class="platform-dot"></span>Vendasta CRM</span>'
+  document.getElementById('demoPlatform').innerHTML = s.platform === 'broadly'
+    ? '<span class="platform-badge broadly"><span class="platform-dot"></span>Broadly Platform</span>'
     : '<span class="platform-badge autotask"><span class="platform-dot"></span>Autotask PSA</span>';
   const syncEl = document.getElementById('demoSync');
-  if (s.sync === 'vendasta-to-autotask') syncEl.innerHTML = '<span class="sync-badge"><span class="sync-icon">&#x21c4;</span> Syncing to Autotask PSA\u2026</span>';
-  else if (s.sync === 'autotask-to-vendasta') syncEl.innerHTML = '<span class="sync-badge"><span class="sync-icon">&#x21c4;</span> Syncing from Autotask to Vendasta\u2026</span>';
+  if (s.sync === 'broadly-to-autotask') syncEl.innerHTML = '<span class="sync-badge"><span class="sync-icon">&#x21c4;</span> Syncing to Autotask PSA\u2026</span>';
+  else if (s.sync === 'autotask-to-broadly') syncEl.innerHTML = '<span class="sync-badge"><span class="sync-icon">&#x21c4;</span> Syncing from Autotask to Broadly\u2026</span>';
   else if (s.sync === 'synced') syncEl.innerHTML = '<span class="sync-badge" style="color:#34d399;">&#x2713; Data verified across both platforms</span>';
   else syncEl.innerHTML = '';
   document.getElementById('btnPrev').disabled = currentStep === 0;
