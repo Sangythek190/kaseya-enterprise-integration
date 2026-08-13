@@ -518,68 +518,68 @@ section + section { border-top: 1px solid #f3f4f6; }
     <!-- ═══════════════ CUSTOMER JOURNEY ═══════════════ -->
     <section id="journey">
       <h2>End-to-End Customer Journey</h2>
-      <p class="section-subtitle">An MSP technician starts in Autotask, clicks into AMP, gets authenticated via SSO, sees their client data already synced in Broadly, activates marketing products, and returns to Autotask where everything is reflected. No tool-switching, no re-entry. Here is that journey step by step.</p>
+      <p class="section-subtitle">Follow a technician from their daily work tool, through the integration, and back. They never leave their comfort zone &mdash; everything just works.</p>
 
       <div class="journey-track">
 
         <div class="journey-step autotask">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Autotask PSA &mdash; Daily Workflow</div>
-          <div class="journey-title">MSP technician manages IT clients</div>
-          <div class="journey-desc">The technician starts their day in Autotask PSA &mdash; managing tickets, tracking time, updating client accounts. This is home base. They have 200+ SMB clients in their account list.</div>
+          <div class="journey-platform">Autotask PSA</div>
+          <div class="journey-title">Technician starts their day</div>
+          <div class="journey-desc">The MSP technician opens Autotask &mdash; their everyday tool for managing tickets, tracking time, and updating client accounts. This is where they spend 8+ hours a day. They have 200+ small business clients here.</div>
         </div>
 
         <div class="journey-step autotask">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Autotask PSA &mdash; AMP</div>
-          <div class="journey-title">MSP decides to sell marketing to a client</div>
-          <div class="journey-desc">The MSP wants to offer website, SEO, or reputation management to a client. They click into Kaseya's AMP (Powered Services Pro) section, which connects them to Broadly's product catalog.</div>
+          <div class="journey-platform">Autotask PSA</div>
+          <div class="journey-title">Wants to sell marketing to a client</div>
+          <div class="journey-desc">A client asks about getting a website or improving their online reviews. The technician clicks into Kaseya's AMP section &mdash; the marketing product catalog powered by Broadly.</div>
         </div>
 
         <div class="journey-step integration">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Integration Layer &mdash; SSO</div>
-          <div class="journey-title">Single sign-on authenticates the technician</div>
-          <div class="journey-desc">OIDC authentication happens invisibly. The technician's Autotask role maps to the correct Broadly permissions. No separate login. No password to remember. They land in Broadly's Business App already authenticated.</div>
-          <span class="journey-tag after">I designed this</span>
+          <div class="journey-platform">What I Built</div>
+          <div class="journey-title">Logged in automatically &mdash; no second password</div>
+          <div class="journey-desc">The technician lands in Broadly already signed in. No separate username or password. Their Autotask role automatically decides what they can access in Broadly. One click, already inside.</div>
+          <span class="journey-tag after">PM ownership: SSO design</span>
         </div>
 
         <div class="journey-step broadly">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Broadly Business App</div>
-          <div class="journey-title">Client data is already there &mdash; no re-entry</div>
-          <div class="journey-desc">The SMB client's company name, address, contacts, and phone numbers were automatically synced from Autotask the moment the integration was activated. The technician sees familiar data. No duplicate entry.</div>
-          <span class="journey-tag after">I designed this</span>
+          <div class="journey-platform">Broadly</div>
+          <div class="journey-title">Client data is already there</div>
+          <div class="journey-desc">The client's company name, address, phone number, and contacts are already in Broadly &mdash; synced automatically from Autotask. No retyping anything. The technician sees the same data they just left.</div>
+          <span class="journey-tag after">PM ownership: CRM sync design</span>
         </div>
 
         <div class="journey-step broadly">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Broadly Business App</div>
-          <div class="journey-title">Technician activates marketing products</div>
-          <div class="journey-desc">The technician provisions website, SEO, or reputation management for their SMB client. Product setup, ordering, and management all happen within the Broadly Business App &mdash; white-labeled under the MSP's own brand.</div>
+          <div class="journey-platform">Broadly</div>
+          <div class="journey-title">Turns on marketing products for the client</div>
+          <div class="journey-desc">The technician sets up a website, SEO, or reputation management for their client. Everything is branded under the MSP's own name &mdash; the client never sees Broadly.</div>
         </div>
 
         <div class="journey-step integration">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Integration Layer &mdash; Bidirectional Sync</div>
-          <div class="journey-title">Updates flow back to Autotask automatically</div>
-          <div class="journey-desc">Any contact or company updates made in Broadly sync back to Autotask PSA. New contacts added in Broadly appear in the Autotask account. The activity feed logs every sync event with timestamps and IDs.</div>
-          <span class="journey-tag after">I designed this</span>
+          <div class="journey-platform">What I Built</div>
+          <div class="journey-title">Changes sync back to Autotask automatically</div>
+          <div class="journey-desc">Any new contacts or updates made in Broadly appear back in Autotask within seconds. Every change is logged with a timestamp so nothing gets lost.</div>
+          <span class="journey-tag after">PM ownership: bidirectional sync</span>
         </div>
 
         <div class="journey-step integration">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Integration Layer &mdash; Billing</div>
-          <div class="journey-title">Billing reconciles across both platforms</div>
-          <div class="journey-desc">Contracts, invoices, and prorated adjustments synchronize between Broadly billing and Autotask PSA contracts. No manual reconciliation. Exception reporting flags any discrepancies for review.</div>
-          <span class="journey-tag after">I designed this</span>
+          <div class="journey-platform">What I Built</div>
+          <div class="journey-title">Billing matches up on both sides</div>
+          <div class="journey-desc">Invoices and contracts stay in sync between both platforms. No one has to compare spreadsheets at the end of the month. If anything looks off, it gets flagged automatically.</div>
+          <span class="journey-tag after">PM ownership: billing sync</span>
         </div>
 
         <div class="journey-step autotask">
           <div class="journey-dot"></div>
-          <div class="journey-platform">Autotask PSA &mdash; Back to Home Base</div>
-          <div class="journey-title">Everything shows up in the MSP's single pane of glass</div>
-          <div class="journey-desc">The technician returns to Autotask and sees the marketing services reflected: contacts updated, activity logged, billing synced. They never had to leave their primary workflow to manage a separate platform.</div>
+          <div class="journey-platform">Autotask PSA</div>
+          <div class="journey-title">Back to home base &mdash; everything is there</div>
+          <div class="journey-desc">The technician returns to Autotask and sees it all: contacts updated, activity logged, billing synced. They managed marketing for a client without ever leaving their everyday tool.</div>
         </div>
 
       </div>
