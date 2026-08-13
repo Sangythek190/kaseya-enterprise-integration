@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kaseya Integration &mdash; Enterprise PSA Integration</title>
+<title>Kaseya Enterprise Integration &mdash; Bidirectional PSA Sync Case Study</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ── Reset & Base ─────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,10 +20,10 @@ body {
 }
 
 /* ── Typography ───────────────────────────────── */
-h1 { font-size: 56px; font-weight: 700; color: #111827; line-height: 1.1; letter-spacing: -1.5px; }
-h2 { font-size: 24px; font-weight: 600; color: #111827; letter-spacing: -0.3px; margin-bottom: 32px; }
+h1 { font-size: 52px; font-weight: 800; color: #111827; line-height: 1.08; letter-spacing: -1.5px; }
+h2 { font-size: 28px; font-weight: 700; color: #111827; letter-spacing: -0.5px; margin-bottom: 12px; }
 h3 { font-size: 18px; font-weight: 600; color: #111827; }
-p  { color: #6b7280; font-size: 17px; line-height: 1.8; }
+p  { color: #6b7280; font-size: 16px; line-height: 1.75; }
 a  { color: #2563eb; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -40,28 +40,29 @@ a:hover { text-decoration: underline; }
   left: 0;
   width: 220px;
   height: 100vh;
-  padding: 48px 24px 48px 32px;
+  padding: 40px 20px 40px 28px;
   border-right: 1px solid #e5e7eb;
   background: #ffffff;
   z-index: 100;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  overflow-y: auto;
 }
 .side-nav .nav-label {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: #9ca3af;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 .side-nav a {
   display: block;
   font-size: 13px;
   font-weight: 500;
   color: #6b7280;
-  padding: 8px 12px;
+  padding: 7px 12px;
   border-radius: 6px;
   transition: all 0.15s ease;
   text-decoration: none;
@@ -76,6 +77,11 @@ a:hover { text-decoration: underline; }
   background: #eff6ff;
   font-weight: 600;
 }
+.nav-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 12px 0;
+}
 
 /* ── Main Content ─────────────────────────────── */
 .main-content {
@@ -86,62 +92,146 @@ a:hover { text-decoration: underline; }
 
 /* ── Sections ─────────────────────────────────── */
 section {
-  padding: 80px 80px;
-  max-width: 900px;
+  padding: 72px 72px;
+  max-width: 960px;
 }
 section + section {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #f3f4f6;
 }
 .section-alt {
   background: #f9fafb;
   max-width: 100%;
 }
 .section-alt > .section-inner {
-  max-width: 900px;
-  padding: 80px 80px;
+  max-width: 960px;
+  padding: 72px 72px;
+}
+.section-dark {
+  background: #111827;
+  max-width: 100%;
+}
+.section-dark > .section-inner {
+  max-width: 960px;
+  padding: 72px 72px;
+}
+.section-dark h2 { color: #ffffff; }
+.section-dark p { color: #9ca3af; }
+
+.section-subtitle {
+  font-size: 15px;
+  color: #6b7280;
+  margin-bottom: 40px;
+  max-width: 600px;
 }
 
 /* ── Hero ─────────────────────────────────────── */
 .hero {
-  padding: 120px 80px 100px;
-  max-width: 900px;
+  padding: 100px 72px 80px;
+  max-width: 960px;
 }
-.badge {
-  display: inline-block;
-  font-size: 12px;
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #2563eb;
-  border: 1.5px solid #2563eb;
-  padding: 4px 14px;
-  border-radius: 4px;
-  margin-bottom: 32px;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.hero-eyebrow .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #059669;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 .hero h1 {
   margin-bottom: 20px;
+  max-width: 700px;
 }
 .hero .subtitle {
-  font-size: 22px;
+  font-size: 20px;
   color: #6b7280;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
+  max-width: 580px;
+  margin-bottom: 40px;
+}
+.hero-stats {
+  display: flex;
+  gap: 48px;
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+}
+.hero-stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.5px;
+}
+.hero-stat-label {
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 500;
 }
 
-/* ── Executive Summary ────────────────────────── */
-.exec-summary p {
-  margin-bottom: 20px;
-  max-width: 680px;
+/* ── Context Cards ────────────────────────────── */
+.context-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 28px;
 }
-.exec-summary p:last-child {
-  margin-bottom: 0;
+.context-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 28px;
+}
+.context-card-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #2563eb;
+  margin-bottom: 16px;
+}
+.context-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.context-card p {
+  font-size: 14px;
+}
+.data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.data-point-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111827;
+}
+.data-point-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
 }
 
 /* ── Key Metrics (Bar Charts) ─────────────────── */
 .metrics-grid {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
 }
 .metric-row {
   display: flex;
@@ -163,20 +253,279 @@ section + section {
 }
 .metric-bar-track {
   width: 100%;
-  height: 8px;
+  height: 6px;
   background: #e5e7eb;
-  border-radius: 4px;
+  border-radius: 3px;
   overflow: hidden;
 }
 .metric-bar-fill {
   height: 100%;
-  border-radius: 4px;
+  border-radius: 3px;
   background: #2563eb;
   transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   width: 0;
 }
 .metric-bar-fill.green { background: #059669; }
 .metric-bar-fill.blue  { background: #2563eb; }
+
+/* ════════════════════════════════════════════════
+   DEMO WALKTHROUGH — Interactive Step Viewer
+   ════════════════════════════════════════════════ */
+.demo-section {
+  background: #111827;
+  max-width: 100%;
+}
+.demo-section .section-inner {
+  max-width: 1100px;
+  padding: 72px 72px;
+}
+.demo-section h2 {
+  color: #ffffff;
+}
+.demo-section .section-subtitle {
+  color: #9ca3af;
+  margin-bottom: 32px;
+}
+
+/* Flow indicator */
+.demo-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 40px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.demo-flow-step {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.demo-flow-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+.demo-flow-step.active .demo-flow-dot,
+.demo-flow-step.completed .demo-flow-dot {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+}
+.demo-flow-step.completed .demo-flow-dot {
+  background: #059669;
+  border-color: #059669;
+}
+.demo-flow-line {
+  width: 40px;
+  height: 2px;
+  background: #374151;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+.demo-flow-step.completed + .demo-flow-step .demo-flow-line,
+.demo-flow-step.completed .demo-flow-line {
+  background: #059669;
+}
+.demo-flow-step:first-child .demo-flow-line {
+  display: none;
+}
+
+/* Platform badge */
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+}
+.platform-badge.vendasta {
+  background: rgba(37, 99, 235, 0.15);
+  color: #60a5fa;
+}
+.platform-badge.autotask {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+.platform-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.platform-badge.vendasta .platform-dot { background: #60a5fa; }
+.platform-badge.autotask .platform-dot { background: #fbbf24; }
+
+/* Demo viewer */
+.demo-viewer {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 40px;
+  align-items: start;
+}
+.demo-screenshot {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #374151;
+  background: #1f2937;
+}
+.demo-screenshot img {
+  width: 100%;
+  display: block;
+  transition: opacity 0.4s ease;
+}
+.demo-screenshot .browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: #1f2937;
+  border-bottom: 1px solid #374151;
+}
+.browser-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #374151;
+}
+.browser-dot.red { background: #ef4444; }
+.browser-dot.yellow { background: #f59e0b; }
+.browser-dot.green { background: #22c55e; }
+.browser-url {
+  flex: 1;
+  margin-left: 10px;
+  font-size: 11px;
+  color: #6b7280;
+  background: #111827;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Demo info panel */
+.demo-info {
+  color: #ffffff;
+}
+.demo-step-counter {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.demo-step-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.demo-step-desc {
+  font-size: 15px;
+  color: #9ca3af;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.demo-highlight {
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+.demo-highlight p {
+  font-size: 13px;
+  color: #93c5fd;
+  line-height: 1.6;
+}
+.demo-highlight .highlight-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #60a5fa;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+
+/* Demo navigation buttons */
+.demo-nav {
+  display: flex;
+  gap: 8px;
+}
+.demo-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+.demo-btn-prev {
+  background: #1f2937;
+  color: #9ca3af;
+  border: 1px solid #374151;
+}
+.demo-btn-prev:hover { background: #374151; color: #ffffff; }
+.demo-btn-next {
+  background: #2563eb;
+  color: #ffffff;
+}
+.demo-btn-next:hover { background: #1d4ed8; }
+.demo-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.demo-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Sync indicator animation */
+.sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-top: 8px;
+}
+.sync-badge .sync-icon {
+  display: inline-block;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
 /* ── Integration Scope (Expandable) ───────────── */
 .scope-list {
@@ -213,6 +562,16 @@ section + section {
   color: #111827;
   transition: color 0.15s ease;
 }
+.scope-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.scope-tag.live { background: #ecfdf5; color: #059669; }
+.scope-tag.demo { background: #eff6ff; color: #2563eb; }
 .scope-chevron {
   width: 20px;
   height: 20px;
@@ -242,7 +601,7 @@ section + section {
 
 /* ── Architecture Diagram ─────────────────────── */
 .arch-diagram {
-  padding: 48px 32px;
+  padding: 40px 24px;
   margin-top: 16px;
 }
 .arch-row {
@@ -254,7 +613,7 @@ section + section {
 }
 .arch-box {
   border: 1.5px solid #e5e7eb;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 16px 28px;
   text-align: center;
   background: #ffffff;
@@ -277,17 +636,33 @@ section + section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 12px;
+  padding: 0 16px;
 }
-.arch-connector .arrow {
-  font-size: 18px;
-  color: #9ca3af;
-  letter-spacing: 2px;
+.arch-arrow-animated {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.arch-arrow-animated .arrow-line {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #2563eb, #059669, #2563eb);
+  background-size: 200% 100%;
+  animation: flow 2s linear infinite;
+  border-radius: 1px;
+}
+@keyframes flow {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.arch-arrow-animated .arrow-tip {
+  font-size: 14px;
+  color: #059669;
 }
 .arch-branches {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
   margin-top: 32px;
   flex-wrap: wrap;
 }
@@ -353,7 +728,7 @@ section + section {
   gap: 16px;
 }
 .pm-list li {
-  font-size: 16px;
+  font-size: 15px;
   color: #6b7280;
   line-height: 1.7;
   padding-left: 20px;
@@ -376,9 +751,9 @@ section + section {
 
 /* ── Footer ───────────────────────────────────── */
 .footer {
-  padding: 48px 80px;
+  padding: 48px 72px;
   border-top: 1px solid #e5e7eb;
-  max-width: 900px;
+  max-width: 960px;
 }
 .footer-name {
   font-size: 16px;
@@ -405,17 +780,31 @@ section + section {
 @media (max-width: 1024px) {
   .side-nav { display: none; }
   .main-content { margin-left: 0; }
-  section, .hero, .footer, .section-alt > .section-inner { padding-left: 40px; padding-right: 40px; }
+  section, .hero, .footer,
+  .section-alt > .section-inner,
+  .section-dark > .section-inner,
+  .demo-section .section-inner { padding-left: 40px; padding-right: 40px; }
+  .demo-viewer { grid-template-columns: 1fr; }
+  .demo-info { order: -1; }
+  .context-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  h1 { font-size: 36px; }
-  .hero .subtitle { font-size: 18px; }
-  section, .hero, .footer, .section-alt > .section-inner { padding-left: 24px; padding-right: 24px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  .hero .subtitle { font-size: 17px; }
+  section, .hero, .footer,
+  .section-alt > .section-inner,
+  .section-dark > .section-inner,
+  .demo-section .section-inner { padding-left: 24px; padding-right: 24px; }
   .cd-row { grid-template-columns: 1fr; }
   .cd-row .cd-col:last-child { border-left: none; padding-left: 0; padding-top: 0; }
   .cd-row .cd-col:first-child { padding-right: 0; }
   .arch-row { flex-direction: column; }
   .arch-connector .arrow { transform: rotate(90deg); }
+  .hero-stats { flex-direction: column; gap: 20px; }
+  .demo-flow { gap: 0; }
+  .demo-flow-line { width: 20px; }
+  .demo-viewer { gap: 24px; }
 }
 </style>
 </head>
@@ -427,11 +816,14 @@ section + section {
   <nav class="side-nav" id="sideNav">
     <div class="nav-label">Kaseya Integration</div>
     <a href="#hero" class="active" data-section="hero">Overview</a>
-    <a href="#summary" data-section="summary">Executive Summary</a>
+    <a href="#summary" data-section="summary">Partner Context</a>
     <a href="#metrics" data-section="metrics">Key Metrics</a>
+    <div class="nav-divider"></div>
+    <a href="#demo" data-section="demo">Live Demo</a>
+    <div class="nav-divider"></div>
     <a href="#scope" data-section="scope">Integration Scope</a>
     <a href="#architecture" data-section="architecture">Architecture</a>
-    <a href="#challenges" data-section="challenges">Challenges & Decisions</a>
+    <a href="#challenges" data-section="challenges">Challenges</a>
     <a href="#pm-work" data-section="pm-work">PM Work</a>
   </nav>
 
@@ -440,49 +832,69 @@ section + section {
 
     <!-- Hero -->
     <section class="hero" id="hero">
-      <div class="badge">Enterprise Partner</div>
-      <h1>Kaseya Integration</h1>
-      <p class="subtitle">$2.2M Contract &mdash; Enterprise PSA Integration</p>
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        Integration Live
+      </div>
+      <h1>Kaseya Autotask Enterprise Integration</h1>
+      <p class="subtitle">
+        Bidirectional PSA synchronization connecting Kaseya's Autotask platform with Vendasta &mdash; enabling MSP technicians to manage digital marketing without switching tools.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value">$2.2M</span>
+          <span class="hero-stat-label">Contract value</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">2,137</span>
+          <span class="hero-stat-label">SMBs on platform</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">260%</span>
+          <span class="hero-stat-label">Revenue growth</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">100%</span>
+          <span class="hero-stat-label">Gross retention</span>
+        </div>
+      </div>
     </section>
 
     <!-- Partner Context -->
-    <section class="exec-summary" id="summary">
+    <section id="summary">
       <h2>Partner &amp; Business Context</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;">
-        <div style="border:1px solid #e5e7eb;border-radius:12px;padding:28px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#2563eb;margin-bottom:14px;">THE PARTNER</div>
-          <div style="font-size:18px;font-weight:700;color:#111827;margin-bottom:8px;">Kaseya &mdash; Autotask PSA</div>
-          <p style="font-size:14px;color:#6b7280;line-height:1.7;">
-            Kaseya is a leading IT management platform serving thousands of Managed Service Providers (MSPs) worldwide. Their Autotask PSA product is the operational backbone for MSP ticket management, billing, and service delivery. AMP (Powered Services Pro) is their partner-facing product enabling MSPs to resell digital marketing services.
-          </p>
+      <p class="section-subtitle">Enterprise-grade integration between two platforms serving thousands of Managed Service Providers globally.</p>
+      <div class="context-grid">
+        <div class="context-card">
+          <div class="context-card-label">The Partner</div>
+          <h3>Kaseya &mdash; Autotask PSA</h3>
+          <p>Kaseya is a leading IT management platform serving thousands of MSPs worldwide. Autotask PSA is the operational backbone for ticket management, billing, and service delivery. AMP (Powered Services Pro) is their partner-facing product enabling MSPs to resell digital marketing services.</p>
         </div>
-        <div style="border:1px solid #e5e7eb;border-radius:12px;padding:28px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#2563eb;margin-bottom:14px;">BUSINESS DATA</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="context-card">
+          <div class="context-card-label">Business Data</div>
+          <div class="data-grid">
             <div>
-              <div style="font-size:24px;font-weight:700;color:#111827;">$2.2M</div>
-              <div style="font-size:12px;color:#6b7280;">Contract value</div>
+              <div class="data-point-value">$2.2M</div>
+              <div class="data-point-label">Contract value</div>
             </div>
             <div>
-              <div style="font-size:24px;font-weight:700;color:#111827;">1000s</div>
-              <div style="font-size:12px;color:#6b7280;">MSPs served globally</div>
+              <div class="data-point-value">1,000+</div>
+              <div class="data-point-label">MSPs served globally</div>
             </div>
             <div>
-              <div style="font-size:24px;font-weight:700;color:#111827;">USD</div>
-              <div style="font-size:12px;color:#6b7280;">Billing currency</div>
+              <div class="data-point-value">Enterprise</div>
+              <div class="data-point-label">SLA tier</div>
             </div>
             <div>
-              <div style="font-size:24px;font-weight:700;color:#111827;">Enterprise</div>
-              <div style="font-size:12px;color:#6b7280;">SLA tier</div>
+              <div class="data-point-value">Multi-phase</div>
+              <div class="data-point-label">Statement of Work</div>
             </div>
           </div>
         </div>
       </div>
-      <div style="border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin-bottom:32px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#2563eb;margin-bottom:12px;">WHY THIS INTEGRATION EXISTS</div>
-        <p style="font-size:14px;color:#6b7280;line-height:1.7;">
-          Kaseya needed to connect their Autotask PSA ecosystem directly into Vendasta's platform so MSP technicians could manage digital marketing services without switching tools. The $2.2M engagement required bidirectional PSA synchronization, SSO/OIDC so technicians authenticate once, billing reconciliation across platforms, and AMP product configuration for white-label reselling. Statement of Work sign-off via DocuSign was required before development began on each phase. I coordinated across engineering, enterprise sales (Adam Stark), partner success, and Kaseya's own technical teams to deliver every component to enterprise SLA requirements.
-        </p>
+      <div class="context-card" style="margin-bottom:0;">
+        <div class="context-card-label">Why This Integration Exists</div>
+        <p>Kaseya needed to connect their Autotask PSA ecosystem directly into Vendasta's platform so MSP technicians could manage digital marketing services without switching tools. The $2.2M engagement required bidirectional CRM synchronization, SSO/OIDC authentication, billing reconciliation, and AMP product configuration for white-label reselling. I coordinated across engineering, enterprise sales, partner success, and Kaseya's technical teams to deliver every component to enterprise SLA requirements.</p>
       </div>
     </section>
 
@@ -490,58 +902,116 @@ section + section {
     <div class="section-alt" id="metrics">
       <div class="section-inner">
         <h2>Key Metrics</h2>
+        <p class="section-subtitle">All integration components are live and actively processing data across both platforms.</p>
         <div class="metrics-grid">
-
           <div class="metric-row">
             <div class="metric-label">
-              <span>Contract Value</span>
-              <span class="metric-value">$2.2M</span>
-            </div>
-            <div class="metric-bar-track">
-              <div class="metric-bar-fill green" data-width="92"></div>
-            </div>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric-label">
-              <span>Autotask PSA Connected</span>
+              <span>Bidirectional CRM Sync</span>
               <span class="metric-value">Live</span>
             </div>
             <div class="metric-bar-track">
-              <div class="metric-bar-fill blue" data-width="100"></div>
+              <div class="metric-bar-fill green" data-width="100"></div>
             </div>
           </div>
-
           <div class="metric-row">
             <div class="metric-label">
               <span>SSO / OIDC Authentication</span>
               <span class="metric-value">Live</span>
             </div>
             <div class="metric-bar-track">
-              <div class="metric-bar-fill blue" data-width="100"></div>
+              <div class="metric-bar-fill green" data-width="100"></div>
             </div>
           </div>
-
           <div class="metric-row">
             <div class="metric-label">
-              <span>MSP Ecosystem Integration</span>
-              <span class="metric-value">Active</span>
-            </div>
-            <div class="metric-bar-track">
-              <div class="metric-bar-fill green" data-width="85"></div>
-            </div>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric-label">
-              <span>Billing Sync</span>
+              <span>Billing Reconciliation</span>
               <span class="metric-value">Live</span>
             </div>
             <div class="metric-bar-track">
-              <div class="metric-bar-fill blue" data-width="100"></div>
+              <div class="metric-bar-fill green" data-width="100"></div>
             </div>
           </div>
+          <div class="metric-row">
+            <div class="metric-label">
+              <span>Revenue Growth (12 months)</span>
+              <span class="metric-value">260%</span>
+            </div>
+            <div class="metric-bar-track">
+              <div class="metric-bar-fill blue" data-width="87"></div>
+            </div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-label">
+              <span>Gross Revenue Retention</span>
+              <span class="metric-value">100%</span>
+            </div>
+            <div class="metric-bar-track">
+              <div class="metric-bar-fill green" data-width="100"></div>
+            </div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-label">
+              <span>SMBs on Platform</span>
+              <span class="metric-value">2,137</span>
+            </div>
+            <div class="metric-bar-track">
+              <div class="metric-bar-fill blue" data-width="78"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- ════════════════════════════════════════════
+         LIVE DEMO WALKTHROUGH
+         ════════════════════════════════════════════ -->
+    <div class="demo-section" id="demo">
+      <div class="section-inner">
+        <h2>Live Demo: Bidirectional CRM Sync</h2>
+        <p class="section-subtitle">
+          Step through the actual integration test &mdash; watch data flow from Vendasta to Autotask and back in real time.
+        </p>
+
+        <!-- Step Flow Indicator -->
+        <div class="demo-flow" id="demoFlow">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Demo Viewer -->
+        <div class="demo-viewer">
+          <!-- Screenshot Area -->
+          <div class="demo-screenshot" id="demoScreenshot">
+            <div class="browser-bar">
+              <span class="browser-dot red"></span>
+              <span class="browser-dot yellow"></span>
+              <span class="browser-dot green"></span>
+              <span class="browser-url" id="demoUrl">vendasta-training.smblogin.com</span>
+            </div>
+            <img id="demoImage" src="img/step-01-connect.jpg" alt="Demo screenshot">
+          </div>
+
+          <!-- Info Panel -->
+          <div class="demo-info">
+            <div id="demoPlatform"></div>
+            <div class="demo-step-counter" id="demoCounter">Step 1 of 8</div>
+            <div class="demo-step-title" id="demoTitle">Connect Autotask Integration</div>
+            <div class="demo-step-desc" id="demoDesc">Description</div>
+            <div class="demo-highlight" id="demoHighlight">
+              <div class="highlight-label">What to notice</div>
+              <p id="demoNotice">Details</p>
+            </div>
+            <div id="demoSync"></div>
+            <div class="demo-nav">
+              <button class="demo-btn demo-btn-prev" id="btnPrev" onclick="demoStep(-1)">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"/></svg>
+                Previous
+              </button>
+              <button class="demo-btn demo-btn-next" id="btnNext" onclick="demoStep(1)">
+                Next
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -549,17 +1019,19 @@ section + section {
     <!-- Integration Scope -->
     <section id="scope">
       <h2>Integration Scope</h2>
+      <p class="section-subtitle">Five major integration components delivered across multiple Statement of Work phases.</p>
       <div class="scope-list">
 
         <div class="scope-item">
           <div class="scope-header" onclick="toggleScope(this)">
             <span class="scope-number">01</span>
-            <span class="scope-title">Autotask PSA Sync</span>
+            <span class="scope-title">Bidirectional CRM Sync</span>
+            <span class="scope-tag live">Live</span>
             <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
           </div>
           <div class="scope-body">
             <div class="scope-body-inner">
-              <p>Bidirectional ticket and service management synchronization between Vendasta and Autotask PSA. Includes real-time status updates, field mapping configuration, and conflict resolution for concurrent edits across platforms.</p>
+              <p>Companies and contacts created in Vendasta automatically sync to Autotask PSA, and vice versa. Includes address, phone, email, and website field mapping with activity feed tracking for every sync event.</p>
             </div>
           </div>
         </div>
@@ -568,11 +1040,12 @@ section + section {
           <div class="scope-header" onclick="toggleScope(this)">
             <span class="scope-number">02</span>
             <span class="scope-title">SSO / OIDC Authentication</span>
+            <span class="scope-tag live">Live</span>
             <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
           </div>
           <div class="scope-body">
             <div class="scope-body-inner">
-              <p>Single sign-on using OpenID Connect for MSP technicians. Enables seamless authentication from Kaseya's environment into Vendasta without separate credentials, with role-based access control mapped from Autotask user roles.</p>
+              <p>Single sign-on using OpenID Connect for MSP technicians. Enables seamless authentication from Kaseya into Vendasta without separate credentials, with configurable role-based access control mapped from Autotask user roles.</p>
             </div>
           </div>
         </div>
@@ -580,12 +1053,13 @@ section + section {
         <div class="scope-item">
           <div class="scope-header" onclick="toggleScope(this)">
             <span class="scope-number">03</span>
-            <span class="scope-title">Billing Integration</span>
+            <span class="scope-title">Billing Reconciliation</span>
+            <span class="scope-tag live">Live</span>
             <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
           </div>
           <div class="scope-body">
             <div class="scope-body-inner">
-              <p>Contract and invoice synchronization between Vendasta billing and Autotask PSA contracts. Handles multi-currency scenarios, prorated adjustments, and automated reconciliation with exception reporting for discrepancies.</p>
+              <p>Contract and invoice synchronization between Vendasta billing and Autotask PSA contracts. Handles multi-currency scenarios, prorated adjustments, and automated reconciliation with exception reporting.</p>
             </div>
           </div>
         </div>
@@ -594,11 +1068,12 @@ section + section {
           <div class="scope-header" onclick="toggleScope(this)">
             <span class="scope-number">04</span>
             <span class="scope-title">AMP Product Configuration</span>
+            <span class="scope-tag live">Live</span>
             <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
           </div>
           <div class="scope-body">
             <div class="scope-body-inner">
-              <p>Powered Services Pro AMP setup and configuration for MSP partners. Includes per-partner product provisioning, feature flag management, and white-label configuration to match each MSP's branding requirements.</p>
+              <p>Powered Services Pro AMP setup for MSP partners. Includes per-partner product provisioning, feature flag management, and white-label configuration to match each MSP's branding requirements.</p>
             </div>
           </div>
         </div>
@@ -606,12 +1081,13 @@ section + section {
         <div class="scope-item">
           <div class="scope-header" onclick="toggleScope(this)">
             <span class="scope-number">05</span>
-            <span class="scope-title">Escalation Workflow</span>
+            <span class="scope-title">Enterprise Escalation Workflow</span>
+            <span class="scope-tag live">Live</span>
             <svg class="scope-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
           </div>
           <div class="scope-body">
             <div class="scope-body-inner">
-              <p>Enterprise SLA monitoring with automated escalation tiers. Includes response-time tracking, severity-based routing, executive notification chains, and integration with Adam Stark's enterprise account management workflow.</p>
+              <p>Enterprise SLA monitoring with automated escalation tiers. Response-time tracking, severity-based routing, and executive notification chains integrated with the enterprise account management workflow.</p>
             </div>
           </div>
         </div>
@@ -623,22 +1099,25 @@ section + section {
     <div class="section-alt" id="architecture">
       <div class="section-inner">
         <h2>Architecture</h2>
+        <p class="section-subtitle">Bidirectional data flow with dedicated sync channels for each integration domain.</p>
         <div class="arch-diagram">
-          <!-- Main flow -->
           <div class="arch-row">
             <div class="arch-box primary">
               <div class="arch-label">Vendasta Platform</div>
-              <div class="arch-sub">Core Services</div>
+              <div class="arch-sub">CRM &middot; Billing &middot; SSC</div>
             </div>
             <div class="arch-connector">
-              <span class="arrow">&larr;&mdash;&rarr;</span>
+              <div class="arch-arrow-animated">
+                <span class="arrow-tip">&larr;</span>
+                <span class="arrow-line"></span>
+                <span class="arrow-tip">&rarr;</span>
+              </div>
             </div>
             <div class="arch-box primary">
               <div class="arch-label">Autotask PSA</div>
               <div class="arch-sub">Kaseya</div>
             </div>
           </div>
-          <!-- Branch connectors -->
           <div class="arch-branches">
             <div class="arch-branch">
               <div class="branch-line"></div>
@@ -650,15 +1129,15 @@ section + section {
             <div class="arch-branch">
               <div class="branch-line"></div>
               <div class="arch-box">
-                <div class="arch-label">Billing Sync</div>
-                <div class="arch-sub">Contracts & Invoices</div>
+                <div class="arch-label">CRM Sync</div>
+                <div class="arch-sub">Companies &amp; Contacts</div>
               </div>
             </div>
             <div class="arch-branch">
               <div class="branch-line"></div>
               <div class="arch-box">
-                <div class="arch-label">PSA Sync</div>
-                <div class="arch-sub">Tickets & Services</div>
+                <div class="arch-label">Billing Sync</div>
+                <div class="arch-sub">Contracts &amp; Invoices</div>
               </div>
             </div>
             <div class="arch-branch">
@@ -675,9 +1154,9 @@ section + section {
 
     <!-- Challenges & Decisions -->
     <section id="challenges">
-      <h2>Challenges & Decisions</h2>
+      <h2>Challenges &amp; Decisions</h2>
+      <p class="section-subtitle">Key technical and process decisions made during the integration.</p>
       <div class="cd-grid">
-
         <div class="cd-row">
           <div class="cd-col">
             <div class="cd-col-header">Challenge</div>
@@ -688,7 +1167,6 @@ section + section {
             <p>Built a dedicated escalation workflow with severity-based routing and executive notification chains. Defined SLA tiers in the Statement of Work with explicit penalty clauses.</p>
           </div>
         </div>
-
         <div class="cd-row">
           <div class="cd-col">
             <div class="cd-col-header">Challenge</div>
@@ -699,7 +1177,6 @@ section + section {
             <p>Implemented per-MSP configuration isolation. Each Managed Service Provider gets an independent sync context with its own field mappings, billing rules, and access controls.</p>
           </div>
         </div>
-
         <div class="cd-row">
           <div class="cd-col">
             <div class="cd-col-header">Challenge</div>
@@ -710,7 +1187,6 @@ section + section {
             <p>Adopted a last-write-wins strategy with conflict logging. Built an exception dashboard for operations teams to review and manually resolve flagged discrepancies.</p>
           </div>
         </div>
-
         <div class="cd-row">
           <div class="cd-col">
             <div class="cd-col-header">Challenge</div>
@@ -721,7 +1197,6 @@ section + section {
             <p>Created a configurable role-mapping layer allowing each MSP to define how Autotask roles translate to Vendasta access levels, with a secure default of minimal permissions.</p>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -729,12 +1204,14 @@ section + section {
     <div class="section-alt" id="pm-work">
       <div class="section-inner">
         <h2>Product Management Work</h2>
+        <p class="section-subtitle">End-to-end ownership from discovery through delivery, coordinating across four teams and two time zones.</p>
         <ul class="pm-list">
           <li><strong>Requirements gathering</strong> with enterprise stakeholders across Kaseya product, engineering, and partner success teams over a multi-month discovery phase.</li>
           <li><strong>Statement of Work definition</strong> with DocuSign sign-off required before development started on each integration phase. Scope, timeline, and acceptance criteria documented per phase.</li>
           <li><strong>Cross-team coordination</strong> across Vendasta engineering (Chennai async team), enterprise sales, partner success, and Kaseya's technical integration team.</li>
           <li><strong>SLA definition and escalation design</strong> establishing response-time tiers, severity classifications, and executive escalation paths with Adam Stark as the enterprise account escalation point.</li>
           <li><strong>Acceptance criteria authoring</strong> covering happy path, edge cases, multi-tenant isolation, concurrent sync scenarios, SSO failure modes, and billing reconciliation validation.</li>
+          <li><strong>Integration testing and verification</strong> &mdash; hands-on testing of bidirectional CRM sync, validating company and contact data flows between Vendasta and Autotask PSA in staging and production environments.</li>
           <li><strong>Mission Brief and Product Factory artifacts</strong> following the full chain: Vision Document, Mission Brief, Prototype, Request for Comments, Epic, and Stories.</li>
         </ul>
       </div>
@@ -743,7 +1220,7 @@ section + section {
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-name">Sangeetha K</div>
-      <div class="footer-role">Product Manager &mdash; Integrations & Professional Services</div>
+      <div class="footer-role">Product Manager &mdash; Integrations &amp; Professional Services</div>
       <div class="footer-links">
         <a href="https://github.com/Sangythek190" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com/in/SangeethaK" target="_blank" rel="noopener">LinkedIn</a>
@@ -754,6 +1231,165 @@ section + section {
 </div>
 
 <script>
+/* ═══════════════════════════════════════════════
+   DEMO WALKTHROUGH DATA & LOGIC
+   ═══════════════════════════════════════════════ */
+const demoSteps = [
+  {
+    img: 'img/step-01-connect.jpg',
+    platform: 'vendasta',
+    title: 'Connect Autotask Integration',
+    desc: 'Inside the Vendasta Sales and Success Center, the Autotask integration is activated under Administration > Integrations. The connection status shows "Connected" with full account details and user sharing controls.',
+    notice: 'The green "Connected" badge confirms the OAuth handshake between Vendasta and Autotask PSA is complete. The integration is live and ready for bidirectional data sync.',
+    url: 'vendasta-training.smblogin.com/.../integrations/config/...',
+    sync: null
+  },
+  {
+    img: 'img/step-02-create-company.jpg',
+    platform: 'vendasta',
+    title: 'Create a Company in Vendasta CRM',
+    desc: 'A new company "Test Company McDonalds" is created in Vendasta CRM with full address details: 123 Main Street, Manhattan, New York, 10001. Company website and all contact fields are populated.',
+    notice: 'All fields entered here — company name, address lines, city, state, zip, website — will be mapped and synced to the corresponding Autotask PSA account fields automatically.',
+    url: 'vendasta-training.smblogin.com/.../crm/company/create',
+    sync: null
+  },
+  {
+    img: 'img/step-03-company-created.jpg',
+    platform: 'vendasta',
+    title: 'Company Created Successfully',
+    desc: 'The company profile is now live in Vendasta CRM. The green success toast confirms creation. The profile shows all the business details, activity feed, and panels for contacts, opportunities, and files.',
+    notice: 'The "Company creation was successful" toast notification appears. Behind the scenes, the integration has already triggered a sync event to create this account in Autotask PSA.',
+    url: 'vendasta-training.smblogin.com/.../crm/company/profile/...',
+    sync: 'vendasta-to-autotask'
+  },
+  {
+    img: 'img/step-04-add-contact.jpg',
+    platform: 'vendasta',
+    title: 'Add a Contact to the Company',
+    desc: 'A new contact "Alice Wonders" is created within the Test Company McDonalds company profile. The contact includes first name, last name, phone number, email, and job title fields.',
+    notice: 'This contact is being created directly in Vendasta CRM. Once saved, the integration will sync this contact to the matching Autotask PSA account (ID 29683779) automatically.',
+    url: 'vendasta-training.smblogin.com/.../crm/company/profile/...',
+    sync: null
+  },
+  {
+    img: 'img/step-05-autotask-verify.jpg',
+    platform: 'autotask',
+    title: 'Verify: Company Synced to Autotask PSA',
+    desc: 'Switching to Autotask PSA (ww2.autotask.net) — the same company "Test Company McDonalds" now exists as Account ID 29683779. All address fields, phone number, and contact "Alice wonders" are present and matching.',
+    notice: 'Every field matches: Address 1 = "123 main street", City = "manhattan", State = "New York", Zip = "10001". The contact "Alice wonders" with phone +12293839212 synced perfectly. Created timestamp shows "04/09/2026 06:35 AM" by "Testing Prod".',
+    url: 'ww2.autotask.net/Mvc/CRM/AccountDetail.mvc?accountId=29683779',
+    sync: 'synced'
+  },
+  {
+    img: 'img/step-06-bidi-sync.jpg',
+    platform: 'vendasta',
+    title: 'Bidirectional Sync: Autotask Updates Flow Back',
+    desc: 'Back in Vendasta CRM, the contact "Alice Newsey" (created/updated in Autotask) has synced back to Vendasta. The activity feed shows multiple "Autotask Contact Updated" events with contact ID 30684128.',
+    notice: 'This is the bidirectional proof: the activity feed explicitly shows "Autotask Contact Updated — Contact with ID 30684128 was updated in Autotask" flowing back into Vendasta in real time (Apr 9, 2026, 4:07 PM).',
+    url: 'vendasta-training.smblogin.com/.../crm/contact/profile/...',
+    sync: 'autotask-to-vendasta'
+  },
+  {
+    img: 'img/step-07-autotask-contacts.jpg',
+    platform: 'autotask',
+    title: 'Both Contacts Visible in Autotask',
+    desc: 'Back in Autotask PSA, Account 29683779 now shows 2 contacts synced: "Ms. Alice Newsey" and "Alice wonders" — both with their phone numbers and last activity dates matching across platforms.',
+    notice: 'The Contacts (2) tab confirms bidirectional sync is working flawlessly. Ms. Alice Newsey (+12239383287) was synced from Autotask to Vendasta and back. Alice wonders (+12293839212) was created in Vendasta and synced here.',
+    url: 'ww2.autotask.net/Mvc/CRM/AccountDetail.mvc?accountId=29683779',
+    sync: 'synced'
+  },
+  {
+    img: 'img/step-08-final-contacts.jpg',
+    platform: 'vendasta',
+    title: 'Final State: All Contacts with Source Tracking',
+    desc: 'The Vendasta CRM Contacts list shows all 3 contacts with clear "Record source" labels: "CRM UI" for contacts created in Vendasta, "autotask" for contacts synced from Autotask PSA. Full data integrity confirmed.',
+    notice: 'Record source tracking is critical for audit trails. "Alice Newsey" shows source = "autotask", confirming she was created in Autotask and synced to Vendasta. "Test Contact" and "Alice wonders" show source = "CRM UI".',
+    url: 'vendasta-training.smblogin.com/.../crm/contact/list',
+    sync: 'synced'
+  }
+];
+
+let currentStep = 0;
+
+function renderDemoFlow() {
+  const flow = document.getElementById('demoFlow');
+  flow.innerHTML = demoSteps.map((step, i) => {
+    let cls = '';
+    if (i < currentStep) cls = 'completed';
+    else if (i === currentStep) cls = 'active';
+    return `
+      <div class="demo-flow-step ${cls}" onclick="goToStep(${i})">
+        ${i > 0 ? '<div class="demo-flow-line"></div>' : ''}
+        <div class="demo-flow-dot">${i + 1}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderDemoStep() {
+  const step = demoSteps[currentStep];
+  const img = document.getElementById('demoImage');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = step.img;
+    img.style.opacity = '1';
+  }, 150);
+
+  document.getElementById('demoUrl').textContent = step.url;
+  document.getElementById('demoCounter').textContent = `Step ${currentStep + 1} of ${demoSteps.length}`;
+  document.getElementById('demoTitle').textContent = step.title;
+  document.getElementById('demoDesc').textContent = step.desc;
+  document.getElementById('demoNotice').textContent = step.notice;
+
+  // Platform badge
+  const platformEl = document.getElementById('demoPlatform');
+  if (step.platform === 'vendasta') {
+    platformEl.innerHTML = '<span class="platform-badge vendasta"><span class="platform-dot"></span>Vendasta CRM</span>';
+  } else {
+    platformEl.innerHTML = '<span class="platform-badge autotask"><span class="platform-dot"></span>Autotask PSA</span>';
+  }
+
+  // Sync indicator
+  const syncEl = document.getElementById('demoSync');
+  if (step.sync === 'vendasta-to-autotask') {
+    syncEl.innerHTML = '<span class="sync-badge"><span class="sync-icon">&#x21c4;</span> Syncing to Autotask PSA...</span>';
+  } else if (step.sync === 'autotask-to-vendasta') {
+    syncEl.innerHTML = '<span class="sync-badge"><span class="sync-icon">&#x21c4;</span> Syncing from Autotask to Vendasta...</span>';
+  } else if (step.sync === 'synced') {
+    syncEl.innerHTML = '<span class="sync-badge" style="color:#34d399;">&#x2713; Data verified across both platforms</span>';
+  } else {
+    syncEl.innerHTML = '';
+  }
+
+  // Button states
+  document.getElementById('btnPrev').disabled = currentStep === 0;
+  document.getElementById('btnNext').disabled = currentStep === demoSteps.length - 1;
+
+  renderDemoFlow();
+}
+
+function demoStep(dir) {
+  const next = currentStep + dir;
+  if (next >= 0 && next < demoSteps.length) {
+    currentStep = next;
+    renderDemoStep();
+  }
+}
+
+function goToStep(i) {
+  currentStep = i;
+  renderDemoStep();
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') demoStep(1);
+  if (e.key === 'ArrowLeft') demoStep(-1);
+});
+
+// Initialize
+renderDemoStep();
+
 /* ── Expand / Collapse Scope Items ─────────── */
 function toggleScope(header) {
   const item = header.parentElement;
@@ -779,7 +1415,6 @@ animateBars();
 
 /* ── Active Nav on Scroll ──────────────────── */
 function setupScrollSpy() {
-  const sections = document.querySelectorAll('section, .section-alt');
   const navLinks = document.querySelectorAll('.side-nav a[data-section]');
   const sectionMap = {};
 
