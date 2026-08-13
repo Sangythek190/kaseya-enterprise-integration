@@ -440,7 +440,7 @@ section + section { border-top: 1px solid #f3f4f6; }
     <!-- ═══════════════ THE BIG PICTURE ═══════════════ -->
     <section id="context">
       <h2>The Big Picture: Why This Integration Exists</h2>
-      <p class="section-subtitle">Before you see what I built, here is why it matters &mdash; the business model, the players, and the gap I closed.</p>
+      <p class="section-subtitle">Kaseya sells IT management tools to MSPs. Broadly sells white-label marketing products. Kaseya wanted their MSPs to resell Broadly's products without leaving Autotask &mdash; a $2.2M contract to make that seamless.</p>
 
       <div class="card-grid">
         <div class="card">
@@ -488,7 +488,7 @@ section + section { border-top: 1px solid #f3f4f6; }
     <div class="section-alt" id="problem">
       <div class="section-inner">
         <h2>The Problem I Solved</h2>
-        <p class="section-subtitle">MSP technicians live in Autotask PSA. Asking them to log into a separate platform to manage marketing products was a non-starter.</p>
+        <p class="section-subtitle">MSPs were signing up for AMP but not activating. The reason: technicians live in Autotask 8+ hours a day and refused to context-switch into a separate platform just to manage marketing. Duplicate data entry, separate logins, disconnected billing &mdash; too much friction.</p>
 
         <div class="ba-grid">
           <div class="ba-card before">
@@ -518,7 +518,7 @@ section + section { border-top: 1px solid #f3f4f6; }
     <!-- ═══════════════ CUSTOMER JOURNEY ═══════════════ -->
     <section id="journey">
       <h2>End-to-End Customer Journey</h2>
-      <p class="section-subtitle">Follow an MSP technician from their daily tool through the integration and back. Every touchpoint I designed is marked.</p>
+      <p class="section-subtitle">An MSP technician starts in Autotask, clicks into AMP, gets authenticated via SSO, sees their client data already synced in Broadly, activates marketing products, and returns to Autotask where everything is reflected. No tool-switching, no re-entry. Here is that journey step by step.</p>
 
       <div class="journey-track">
 
@@ -590,7 +590,7 @@ section + section { border-top: 1px solid #f3f4f6; }
       <div class="section-inner">
         <h2>Proof of Execution: Live Integration Demo</h2>
         <p class="section-subtitle" style="color:#9ca3af;">
-          I did not just spec this &mdash; I tested it hands-on. Step through the actual production test where data flows from Broadly to Autotask and back.
+          I did not just write specs and hand off. I personally tested this integration in production &mdash; created companies and contacts in Broadly, verified they appeared in Autotask PSA, then created records in Autotask and confirmed they synced back. These are the actual screenshots from that testing session.
         </p>
 
         <div class="demo-flow" id="demoFlow"></div>
@@ -634,7 +634,7 @@ section + section { border-top: 1px solid #f3f4f6; }
     <!-- ═══════════════ PM IMPACT ═══════════════ -->
     <section id="impact">
       <h2>What I Actually Did as the Product Manager</h2>
-      <p class="section-subtitle">Not task lists &mdash; the decisions I made, why they mattered, and what they changed.</p>
+      <p class="section-subtitle">Not a list of tasks I completed. These are the strategic decisions I made that shaped the product: choosing bidirectional sync over one-way import, designing conflict resolution, building for multi-tenant isolation, and writing specs clear enough for an async engineering team 12 time zones away.</p>
 
       <div class="impact-grid">
 
@@ -709,7 +709,7 @@ section + section { border-top: 1px solid #f3f4f6; }
     <div class="section-alt" id="results">
       <div class="section-inner">
         <h2>Business Results</h2>
-        <p class="section-subtitle">The integration went live, MSPs activated, and the numbers followed.</p>
+        <p class="section-subtitle">The integration shipped, activation friction disappeared, and MSPs started selling. Within 12 months: 260% revenue growth, 2,137 paying SMBs, $188K monthly billing, and zero gross revenue churn.</p>
         <div class="metrics-grid">
           <div class="metric-row">
             <div class="metric-label">
@@ -782,7 +782,7 @@ section + section { border-top: 1px solid #f3f4f6; }
     <section id="architecture" style="max-width:100%; padding:0;">
       <div style="max-width:1100px; padding:72px 72px;">
         <h2>The Big Picture: How It All Connects</h2>
-        <p class="section-subtitle">This is not just a technical diagram. This is how 1,000+ MSPs serve 2,137+ SMBs through two platforms that I connected.</p>
+        <p class="section-subtitle">SMBs need marketing. MSPs sell it. Broadly fulfills it. Kaseya channels it. I built the integration layer that connects all four players &mdash; SSO, CRM sync, billing reconciliation, and white-label config &mdash; so 1,000+ MSPs can serve 2,137+ SMBs without anyone switching tools.</p>
 
         <!-- ── 3-Column Visual Story ── -->
         <div style="display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:0; align-items:stretch; margin-top:32px; margin-bottom:48px;">
@@ -921,7 +921,7 @@ section + section { border-top: 1px solid #f3f4f6; }
     <div class="section-alt" id="scope">
       <div class="section-inner">
         <h2>Integration Scope</h2>
-        <p class="section-subtitle">Five components delivered across multiple Statement of Work phases.</p>
+        <p class="section-subtitle">Five integration components delivered across multiple Statement of Work phases, each with DocuSign sign-off before development started. All five are live in production.</p>
         <div class="scope-list">
           <div class="scope-item">
             <div class="scope-header" onclick="toggleScope(this)">
