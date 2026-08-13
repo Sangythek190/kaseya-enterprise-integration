@@ -398,7 +398,7 @@ section + section { border-top: 1px solid #f3f4f6; }
     <div class="nav-divider"></div>
     <a href="#demo" data-section="demo">Live Demo</a>
     <div class="nav-divider"></div>
-    <a href="#impact" data-section="impact">PM Impact</a>
+    <a href="#impact" data-section="impact">Strategic Decisions</a>
     <a href="#results" data-section="results">Results</a>
     <a href="#architecture" data-section="architecture">Architecture</a>
     <a href="#scope" data-section="scope">Integration Scope</a>
@@ -415,7 +415,7 @@ section + section { border-top: 1px solid #f3f4f6; }
       </div>
       <h1>Kaseya Enterprise Integration</h1>
       <p class="subtitle">
-        I designed and shipped the bidirectional Autotask-Broadly integration powering a $2.2M enterprise deal.
+        Led end-to-end product strategy for a $2.2M enterprise integration &mdash; from discovery and Statement of Work through architecture decisions, cross-team delivery across two time zones, and hands-on production verification. Bidirectional Autotask PSA and Broadly platform sync serving 1,000+ MSPs and 2,137 paying SMBs.
       </p>
       <div class="hero-stats">
         <div class="hero-stat">
@@ -645,7 +645,7 @@ section + section { border-top: 1px solid #f3f4f6; }
       <div class="section-inner">
         <h2>Proof of Execution: Live Demo</h2>
         <p class="section-subtitle" style="color:#9ca3af;">
-          I personally tested this integration in production. These are actual screenshots from that session.
+          Production verification of bidirectional sync &mdash; actual screenshots from the integration testing session.
         </p>
 
         <div class="demo-flow" id="demoFlow"></div>
@@ -688,57 +688,65 @@ section + section { border-top: 1px solid #f3f4f6; }
 
     <!-- ═══════════════ PM IMPACT ═══════════════ -->
     <section id="impact">
-      <h2>What I Did as Product Manager</h2>
+      <h2>Strategic Decisions &amp; Ownership</h2>
 
       <!-- 2x4 Icon Card Grid -->
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px;">
 
         <div style="border:1px solid #e5e7eb; border-radius:12px; padding:24px;">
           <div style="font-size:28px; margin-bottom:8px;">&#x1F50D;</div>
-          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Found the gap</div>
-          <div style="font-size:13px; font-weight:600; color:#059669;">Led to bidi sync</div>
+          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Activation gap analysis</div>
+          <div style="font-size:13px; color:#6b7280;">Mapped five context-switch friction points blocking MSP adoption</div>
+          <div style="font-size:13px; font-weight:600; color:#059669; margin-top:6px;">Outcome: Defined bidirectional sync requirement</div>
         </div>
 
         <div style="border:1px solid #e5e7eb; border-radius:12px; padding:24px;">
           <div style="font-size:28px; margin-bottom:8px;">&#x1F504;</div>
-          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Chose bidi over import</div>
-          <div style="font-size:13px; font-weight:600; color:#059669;">Zero data staleness</div>
+          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Sync architecture decision</div>
+          <div style="font-size:13px; color:#6b7280;">Pushed for continuous bidirectional sync over one-time import</div>
+          <div style="font-size:13px; font-weight:600; color:#059669; margin-top:6px;">Outcome: Zero data staleness across platforms</div>
         </div>
 
         <div style="border:1px solid #e5e7eb; border-radius:12px; padding:24px;">
           <div style="font-size:28px; margin-bottom:8px;">&#x2694;&#xFE0F;</div>
-          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Conflict resolution</div>
-          <div style="font-size:13px; font-weight:600; color:#059669;">Last-write-wins + audit</div>
+          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Conflict resolution strategy</div>
+          <div style="font-size:13px; color:#6b7280;">Defined last-write-wins with exception logging and audit dashboard</div>
+          <div style="font-size:13px; font-weight:600; color:#059669; margin-top:6px;">Outcome: Data integrity without user disruption</div>
         </div>
 
         <div style="border:1px solid #e5e7eb; border-radius:12px; padding:24px;">
           <div style="font-size:28px; margin-bottom:8px;">&#x1F510;</div>
-          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Role mapping</div>
-          <div style="font-size:13px; font-weight:600; color:#059669;">Self-service config</div>
+          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Access control design</div>
+          <div style="font-size:13px; color:#6b7280;">Configurable role-mapping layer for 12 Autotask role types</div>
+          <div style="font-size:13px; font-weight:600; color:#059669; margin-top:6px;">Outcome: Self-service, zero engineering tickets</div>
         </div>
 
         <div style="border:1px solid #e5e7eb; border-radius:12px; padding:24px;">
           <div style="font-size:28px; margin-bottom:8px;">&#x1F3E2;</div>
-          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Tenant isolation</div>
-          <div style="font-size:13px; font-weight:600; color:#059669;">1,000+ MSPs isolated</div>
+          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Multi-tenant isolation model</div>
+          <div style="font-size:13px; color:#6b7280;">Independent sync context per MSP &mdash; field mappings, billing, access</div>
+          <div style="font-size:13px; font-weight:600; color:#059669; margin-top:6px;">Outcome: Enterprise-grade isolation for 1,000+ tenants</div>
         </div>
 
         <div style="border:1px solid #e5e7eb; border-radius:12px; padding:24px;">
           <div style="font-size:28px; margin-bottom:8px;">&#x1F4DD;</div>
-          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Multi-phase SOW</div>
-          <div style="font-size:13px; font-weight:600; color:#059669;">Zero scope creep</div>
+          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Multi-phase Statement of Work</div>
+          <div style="font-size:13px; color:#6b7280;">DocuSign-gated phases with SLA tiers and acceptance criteria</div>
+          <div style="font-size:13px; font-weight:600; color:#059669; margin-top:6px;">Outcome: Zero scope creep across all phases</div>
         </div>
 
         <div style="border:1px solid #e5e7eb; border-radius:12px; padding:24px;">
           <div style="font-size:28px; margin-bottom:8px;">&#x1F9EA;</div>
-          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Hands-on testing</div>
-          <div style="font-size:13px; font-weight:600; color:#059669;">PM-verified in prod</div>
+          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Production verification</div>
+          <div style="font-size:13px; color:#6b7280;">Hands-on end-to-end testing of bidirectional sync in production</div>
+          <div style="font-size:13px; font-weight:600; color:#059669; margin-top:6px;">Outcome: PM-validated production quality</div>
         </div>
 
         <div style="border:1px solid #e5e7eb; border-radius:12px; padding:24px;">
           <div style="font-size:28px; margin-bottom:8px;">&#x1F30F;</div>
-          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Chennai handoff</div>
-          <div style="font-size:13px; font-weight:600; color:#059669;">Zero rework from specs</div>
+          <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">Async delivery coordination</div>
+          <div style="font-size:13px; color:#6b7280;">Chennai engineering team (12-hour offset) &mdash; GIVEN/WHEN/THEN specs</div>
+          <div style="font-size:13px; font-weight:600; color:#059669; margin-top:6px;">Outcome: Zero rework cycles from ambiguous specs</div>
         </div>
 
       </div>
@@ -1048,11 +1056,11 @@ section + section { border-top: 1px solid #f3f4f6; }
    CUSTOMER JOURNEY TOOLTIPS
    ═══════════════════════════════════════════════ */
 const journeyTips = [
-  'MSP technician opens Autotask \u2014 their 8-hour daily tool with 200+ SMB clients.',
-  'Client asks about marketing; tech clicks into Kaseya AMP product catalog.',
-  'Lands in Broadly already signed in \u2014 no separate credentials, role auto-mapped.',
-  'Client data already synced from Autotask \u2014 no retyping company or contacts.',
-  'Contacts and updates flow back to Autotask in real time with full audit trail.'
+  'MSP technicians operate from Autotask PSA as their primary workflow \u2014 200+ SMB accounts, tickets, billing, and contracts.',
+  'MSP identifies a digital marketing upsell opportunity and navigates to the Kaseya AMP product catalog.',
+  'OIDC-based single sign-on authenticates the technician seamlessly \u2014 Autotask roles map to Broadly permissions automatically.',
+  'CRM data pre-synced from Autotask \u2014 company profiles, contacts, addresses, and phone numbers are already populated.',
+  'Bidirectional sync pushes all updates back to Autotask in real time with timestamped audit trail per sync event.'
 ];
 let activeJourneyTip = -1;
 
